@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSBudgetRequirementDetail" targetNamespace="http://tempuri.org/DSBudgetRequirementDetail.xsd" xmlns:mstns="http://tempuri.org/DSBudgetRequirementDetail.xsd" xmlns="http://tempuri.org/DSBudgetRequirementDetail.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSBudgetRequirementDetail" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSBudgetRequirementDetail" msprop:Generator_UserDSName="DSBudgetRequirementDetail">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BudgetDetails" msprop:Generator_TableClassName="BudgetDetailsDataTable" msprop:Generator_TableVarName="tableBudgetDetails" msprop:Generator_TablePropName="BudgetDetails" msprop:Generator_RowDeletingName="BudgetDetailsRowDeleting" msprop:Generator_RowChangingName="BudgetDetailsRowChanging" msprop:Generator_RowEvHandlerName="BudgetDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="BudgetDetailsRowDeleted" msprop:Generator_UserTableName="BudgetDetails" msprop:Generator_RowChangedName="BudgetDetailsRowChanged" msprop:Generator_RowEvArgName="BudgetDetailsRowChangeEvent" msprop:Generator_RowClassName="BudgetDetailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ZoneInfoId" msprop:Generator_ColumnVarNameInTable="columnZoneInfoId" msprop:Generator_ColumnPropNameInRow="ZoneInfoId" msprop:Generator_ColumnPropNameInTable="ZoneInfoIdColumn" msprop:Generator_UserColumnName="ZoneInfoId" type="xs:int" minOccurs="0" />
+              <xs:element name="ZoneInfoName" msprop:Generator_ColumnVarNameInTable="columnZoneInfoName" msprop:Generator_ColumnPropNameInRow="ZoneInfoName" msprop:Generator_ColumnPropNameInTable="ZoneInfoNameColumn" msprop:Generator_UserColumnName="ZoneInfoName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="budegetDeptName" msprop:Generator_ColumnVarNameInTable="columnbudegetDeptName" msprop:Generator_ColumnPropNameInRow="budegetDeptName" msprop:Generator_ColumnPropNameInTable="budegetDeptNameColumn" msprop:Generator_UserColumnName="budegetDeptName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="itemId" msprop:Generator_ColumnVarNameInTable="columnitemId" msprop:Generator_ColumnPropNameInRow="itemId" msprop:Generator_ColumnPropNameInTable="itemIdColumn" msprop:Generator_UserColumnName="itemId" type="xs:int" minOccurs="0" />
+              <xs:element name="itemName" msprop:Generator_ColumnVarNameInTable="columnitemName" msprop:Generator_ColumnPropNameInRow="itemName" msprop:Generator_ColumnPropNameInTable="itemNameColumn" msprop:Generator_UserColumnName="itemName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="budget_amount_prev" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbudget_amount_prev" msprop:Generator_ColumnPropNameInRow="budget_amount_prev" msprop:Generator_ColumnPropNameInTable="budget_amount_prevColumn" msprop:Generator_UserColumnName="budget_amount_prev" type="xs:decimal" minOccurs="0" />
+              <xs:element name="actual_amount_prev" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnactual_amount_prev" msprop:Generator_ColumnPropNameInRow="actual_amount_prev" msprop:Generator_ColumnPropNameInTable="actual_amount_prevColumn" msprop:Generator_UserColumnName="actual_amount_prev" type="xs:decimal" minOccurs="0" />
+              <xs:element name="budget_amount_cur" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbudget_amount_cur" msprop:Generator_ColumnPropNameInRow="budget_amount_cur" msprop:Generator_ColumnPropNameInTable="budget_amount_curColumn" msprop:Generator_UserColumnName="budget_amount_cur" type="xs:decimal" minOccurs="0" />
+              <xs:element name="actual_amount_cur" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnactual_amount_cur" msprop:Generator_ColumnPropNameInRow="actual_amount_cur" msprop:Generator_ColumnPropNameInTable="actual_amount_curColumn" msprop:Generator_UserColumnName="actual_amount_cur" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GroupLedger" targetNamespace="http://tempuri.org/GroupLedger.xsd" xmlns:mstns="http://tempuri.org/GroupLedger.xsd" xmlns="http://tempuri.org/GroupLedger.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="GroupLedger" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="GroupLedger" msprop:Generator_UserDSName="GroupLedger">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="proc_acc_GroupLedger" msprop:Generator_TableClassName="proc_acc_GroupLedgerDataTable" msprop:Generator_TableVarName="tableproc_acc_GroupLedger" msprop:Generator_RowChangedName="proc_acc_GroupLedgerRowChanged" msprop:Generator_TablePropName="proc_acc_GroupLedger" msprop:Generator_RowDeletingName="proc_acc_GroupLedgerRowDeleting" msprop:Generator_RowChangingName="proc_acc_GroupLedgerRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_GroupLedgerRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_GroupLedgerRowDeleted" msprop:Generator_RowClassName="proc_acc_GroupLedgerRow" msprop:Generator_UserTableName="proc_acc_GroupLedger" msprop:Generator_RowEvArgName="proc_acc_GroupLedgerRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="coa_id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncoa_id" msprop:Generator_ColumnPropNameInRow="coa_id" msprop:Generator_ColumnPropNameInTable="coa_idColumn" msprop:Generator_UserColumnName="coa_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="coa_name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncoa_name" msprop:Generator_ColumnPropNameInRow="coa_name" msprop:Generator_ColumnPropNameInTable="coa_nameColumn" msprop:Generator_UserColumnName="coa_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="account_code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnaccount_code" msprop:Generator_ColumnPropNameInRow="account_code" msprop:Generator_ColumnPropNameInTable="account_codeColumn" msprop:Generator_UserColumnName="account_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fundControl_id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnfundControl_id" msprop:Generator_ColumnPropNameInRow="fundControl_id" msprop:Generator_ColumnPropNameInTable="fundControl_idColumn" msprop:Generator_UserColumnName="fundControl_id" type="xs:int" minOccurs="0" />
+              <xs:element name="accountGroup" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnaccountGroup" msprop:Generator_ColumnPropNameInRow="accountGroup" msprop:Generator_ColumnPropNameInTable="accountGroupColumn" msprop:Generator_UserColumnName="accountGroup" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="openingBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnopeningBalance" msprop:Generator_ColumnPropNameInRow="openingBalance" msprop:Generator_ColumnPropNameInTable="openingBalanceColumn" msprop:Generator_UserColumnName="openingBalance" type="xs:double" minOccurs="0" />
+              <xs:element name="periodBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnperiodBalance" msprop:Generator_ColumnPropNameInRow="periodBalance" msprop:Generator_ColumnPropNameInTable="periodBalanceColumn" msprop:Generator_UserColumnName="periodBalance" type="xs:double" minOccurs="0" />
+              <xs:element name="closingBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnclosingBalance" msprop:Generator_ColumnPropNameInRow="closingBalance" msprop:Generator_ColumnPropNameInTable="closingBalanceColumn" msprop:Generator_UserColumnName="closingBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="periodDebit" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnperiodDebit" msprop:Generator_ColumnPropNameInRow="periodDebit" msprop:Generator_ColumnPropNameInTable="periodDebitColumn" msprop:Generator_UserColumnName="periodDebit" type="xs:double" minOccurs="0" />
+              <xs:element name="periodCredit" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnperiodCredit" msprop:Generator_ColumnPropNameInRow="periodCredit" msprop:Generator_ColumnPropNameInTable="periodCreditColumn" msprop:Generator_UserColumnName="periodCredit" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,15 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Notes";
+}
+<!-- general form elements -->
+<div class="box box-primary">
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "BalanceSheet", FormMethod.Post, new { @id = "frm" }))
+    {
+        <iframe src="~/ReportViewers/myNotesReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>
+    }
+</div><!-- /.box -->
+@*<script type="text/javascript">
+        window.close();
+</script>*@

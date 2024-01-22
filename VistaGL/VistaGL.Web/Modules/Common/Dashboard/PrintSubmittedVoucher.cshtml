@@ -1,0 +1,84 @@
+﻿@model VistaGL.Modules.Common.Dashboard.DashboardPrintModel
+
+@{
+    //Layout = null;
+    ViewData["Title"] = @Model.Title;
+}
+
+<div style="border-bottom: 1px solid blueviolet;">
+    @Model.Title
+</div>
+<br />
+
+@{
+    var distinctItems = Model.SubmitDetail.GroupBy(s => s.EmpID).Select(g => g.First()).ToList();
+    int slNo = 0;
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered" style="width: 500px; font-size: 8pt;">
+        <caption style="border-bottom: 1px solid blueviolet;">Number of Voucher(s) Possessed by Employee</caption>
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 40px;">#</th>
+                <th style="width: 100px;">Employee Id</th>
+                <th style="width: 250px;">Employee Name</th>
+                <th align="right" style="width: 110px;">Total Voucher</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in distinctItems)
+            {
+                <tr>
+                    <td>@(++slNo)</td>
+                    <td align="center">@item.EmpID</td>
+                    <td>@item.FullName</td>
+                    <td align="right">@item.TotalVoucher</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<br />
+
+<!-- DETAILS -->
+<div style="padding-bottom: 5px;">
+    Details
+</div>
+<div style="border-bottom: 1px solid blueviolet; width: 500px; margin-bottom: 10px;">
+    @{
+        slNo = 0;
+    }
+</div>
+
+
+@foreach (var employee in distinctItems)
+{
+    @employee.EmpID<span>&nbsp;-&nbsp;</span>@employee.FullName
+    <div class="table-responsive">
+        <table class="table table-bordered" style="width: 660px; font-size: 8pt;">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="width: 40px;">#</th>
+                    <th style="width: 150px;">Voucher No.</th>
+                    <th style="width: 100px; alignment: center;">Has Auto JV</th>
+                    <th style="width: 150px;">Auto JV No</th>
+                    <th style="width: 220px;">Forwarded By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SubmitDetail.Where(w => w.EmpID == employee.EmpID))
+                {
+                    <tr>
+                        <td>@(++slNo)</td>
+                        <td>@item.VoucherNo</td>
+                        <td>@(item.LinkedWithAutoJV ? "Yes" : "No")</td>
+                        <td>@item.LinkedVoucherNo</td>
+                        <td>@item.ForwardedBy</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

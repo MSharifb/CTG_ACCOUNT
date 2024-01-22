@@ -1,0 +1,154 @@
+﻿@model VistaGL.Modules.Reports.VatTaxVoucher.VatTaxVoucherModel
+@{
+    ViewBag.Title = "Prepare VAT/TAX Voucher";
+}
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">Prepare Voucher for Vat and Tax</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "VatTaxVoucher", FormMethod.Post, new { @id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (Model.IsSuccess == 1)
+                    {
+                        <span style="color:forestgreen; font-weight:bold; font-size:medium;">@Model.Message</span>
+                    }
+                    else if (Model.IsSuccess == 0)
+                    {
+                        <span style="color:red">@Model.Message</span>
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        @Html.Label("Voucher Type", new { @class = "control-label" })
+                        <br />
+                        @Html.RadioButtonFor(model => model.IsVat, "I", new { @checked = true })&nbsp;@Html.Label("Income Tax") @Html.RadioButtonFor(model => model.IsVat, "V")&nbsp;@Html.Label("Vat")
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.Label("Voucher Date", new { @class = "control-label" })
+                        <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.VoucherDate, new { @class = "fixed-rpt-date form-control date required" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @*<div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.Label("Year", new { @class = "control-label" })
+                        <label class="required-field">*</label>
+                        @Html.DropDownListFor(m => m.Year, Model.YearList, "Select One", new { @class = "form-controlForDDL required ddl" })
+                    </div>
+                </div>*@
+
+                @*<div class="col-sm-4">
+                        <div class="form-group">
+                            @Html.Label("Month", new { @class = "control-label" })
+                            <label class="required-field">*</label>
+                            @Html.DropDownListFor(m => m.Month, Model.MonthList, "Select One", new { @class = "form-controlForDDL required ddl" })
+                        </div>
+                    </div>*@
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FromDate, new { @class = "control-label" })
+                        <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control date required" })
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ToDate, new { @class = "control-label" })
+                        <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control date required" })
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        @Html.Label("Sub Ledger (optional):-", new { @class = "control-label" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        [Default Sub-ledger for TAX is 'COMMISSIONER OF TAXES, TAXES ZONE-2, DHAKA' <br />
+                        And for VAT is 'GOVT. REVENEU COLLECTION. CHALLAN CODE NO. 1-1133-0035-0311']
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.DropDownListFor(m => m.CostCenterId, Model.CostCenterList, "Select One", new { @class = "form-controlForDDL ddl" })
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="box-footer">
+            <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Prepare Voucher</button>
+        </div>
+    }
+</div>
+<!-- /.box -->
+<script type="text/javascript">
+
+    $(function () {
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true,
+            minimumInputLength: 1
+        });
+
+        $(".date").datepicker();
+        //d = new Date();
+        //date = d.format("dd-MM-yyyy");
+        //if ($('#VoucherDate').val() == '') {
+        //    $('#VoucherDate').val(date);
+        //}
+        $("#btnSubmit").click(function () {
+            return fnValidate();
+        });
+
+        @*if(@Model.Message != "" && @Model.Message != undefined){
+            alert(@Model.Message);
+        }*@
+
+    });
+
+</script>

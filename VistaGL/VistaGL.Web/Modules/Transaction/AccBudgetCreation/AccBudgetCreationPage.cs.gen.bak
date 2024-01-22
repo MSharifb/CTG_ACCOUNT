@@ -1,0 +1,17 @@
+﻿
+namespace VistaGL.Transaction.Pages
+{
+    using Serenity;
+    using Serenity.Web;
+    using System.Web.Mvc;
+
+    [RoutePrefix("Transaction/AccBudgetCreation"), Route("{action=index}")]
+    [PageAuthorize(typeof(Entities.AccBudgetCreationRow))]
+    public class AccBudgetCreationController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View("~/Modules/Transaction/AccBudgetCreation/AccBudgetCreationIndex.cshtml");
+        }
+    }
+}

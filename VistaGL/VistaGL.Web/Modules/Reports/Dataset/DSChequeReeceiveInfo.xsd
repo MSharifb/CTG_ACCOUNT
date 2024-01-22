@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSChequeReeceiveInfo" targetNamespace="http://tempuri.org/DSChequeReeceiveInfo.xsd" xmlns:mstns="http://tempuri.org/DSChequeReeceiveInfo.xsd" xmlns="http://tempuri.org/DSChequeReeceiveInfo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSChequeReeceiveInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSChequeReeceiveInfo" msprop:Generator_UserDSName="DSChequeReeceiveInfo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcess" msprop:Generator_TableClassName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessDataTable" msprop:Generator_TableVarName="tableRpt_SP_ACC_ChequeDDPOReceiveInfoProcess" msprop:Generator_RowChangedName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessRowChanged" msprop:Generator_TablePropName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcess" msprop:Generator_RowDeletingName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessRowDeleting" msprop:Generator_RowChangingName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessRowChanging" msprop:Generator_RowEvHandlerName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessRowChangeEventHandler" msprop:Generator_RowDeletedName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessRowDeleted" msprop:Generator_RowClassName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessRow" msprop:Generator_UserTableName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcess" msprop:Generator_RowEvArgName="Rpt_SP_ACC_ChequeDDPOReceiveInfoProcessRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="chequeReceiveId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnchequeReceiveId" msprop:Generator_ColumnPropNameInRow="chequeReceiveId" msprop:Generator_ColumnPropNameInTable="chequeReceiveIdColumn" msprop:Generator_UserColumnName="chequeReceiveId" type="xs:int" />
+              <xs:element name="bankName" msprop:Generator_ColumnVarNameInTable="columnbankName" msprop:Generator_ColumnPropNameInRow="bankName" msprop:Generator_ColumnPropNameInTable="bankNameColumn" msprop:Generator_UserColumnName="bankName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="branchName" msprop:Generator_ColumnVarNameInTable="columnbranchName" msprop:Generator_ColumnPropNameInRow="branchName" msprop:Generator_ColumnPropNameInTable="branchNameColumn" msprop:Generator_UserColumnName="branchName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="accountName" msprop:Generator_ColumnVarNameInTable="columnaccountName" msprop:Generator_ColumnPropNameInRow="accountName" msprop:Generator_ColumnPropNameInTable="accountNameColumn" msprop:Generator_UserColumnName="accountName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="accountNo" msprop:Generator_ColumnVarNameInTable="columnaccountNo" msprop:Generator_ColumnPropNameInRow="accountNo" msprop:Generator_ColumnPropNameInTable="accountNoColumn" msprop:Generator_UserColumnName="accountNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChequeNo" msprop:Generator_ColumnVarNameInTable="columnChequeNo" msprop:Generator_ColumnPropNameInRow="ChequeNo" msprop:Generator_ColumnPropNameInTable="ChequeNoColumn" msprop:Generator_UserColumnName="ChequeNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="receiveType" msprop:Generator_ColumnVarNameInTable="columnreceiveType" msprop:Generator_ColumnPropNameInRow="receiveType" msprop:Generator_ColumnPropNameInTable="receiveTypeColumn" msprop:Generator_UserColumnName="receiveType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="chequeType" msprop:Generator_ColumnVarNameInTable="columnchequeType" msprop:Generator_ColumnPropNameInRow="chequeType" msprop:Generator_ColumnPropNameInTable="chequeTypeColumn" msprop:Generator_UserColumnName="chequeType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:decimal" />
+              <xs:element name="chequeDate" msprop:Generator_ColumnVarNameInTable="columnchequeDate" msprop:Generator_ColumnPropNameInRow="chequeDate" msprop:Generator_ColumnPropNameInTable="chequeDateColumn" msprop:Generator_UserColumnName="chequeDate" type="xs:dateTime" />
+              <xs:element name="chequeReceiveDate" msprop:Generator_ColumnVarNameInTable="columnchequeReceiveDate" msprop:Generator_ColumnPropNameInRow="chequeReceiveDate" msprop:Generator_ColumnPropNameInTable="chequeReceiveDateColumn" msprop:Generator_UserColumnName="chequeReceiveDate" type="xs:dateTime" />
+              <xs:element name="EntityId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnEntityId" msprop:Generator_ColumnPropNameInRow="EntityId" msprop:Generator_ColumnPropNameInTable="EntityIdColumn" msprop:Generator_UserColumnName="EntityId" type="xs:int" />
+              <xs:element name="EntityName" msprop:Generator_ColumnVarNameInTable="columnEntityName" msprop:Generator_ColumnPropNameInRow="EntityName" msprop:Generator_ColumnPropNameInTable="EntityNameColumn" msprop:Generator_UserColumnName="EntityName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZoneInfoId" msprop:Generator_ColumnVarNameInTable="columnZoneInfoId" msprop:Generator_ColumnPropNameInRow="ZoneInfoId" msprop:Generator_ColumnPropNameInTable="ZoneInfoIdColumn" msprop:Generator_UserColumnName="ZoneInfoId" type="xs:int" />
+              <xs:element name="ZoneName" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

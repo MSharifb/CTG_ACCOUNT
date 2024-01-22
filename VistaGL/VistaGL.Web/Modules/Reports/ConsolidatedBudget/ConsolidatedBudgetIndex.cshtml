@@ -1,0 +1,168 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Consolidated Budget";
+}
+
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">Consolidated Budget</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "ConsolidatedBudget", FormMethod.Post, new { @id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.Label("Entity", new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                                <label class="required-field">*</label>
+                                &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                                <br />
+                                @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.Label("Financial Year", new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.DropDownListFor(m => m.financialPeriodId, Model.financialPeriodForBudget, "Select One", new { @class = "form-controlForDDL required ddl" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SelectedDeptList, new { @class = "control-label " })
+                                <label class="required-field">*</label>
+                                &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllDept">&nbsp;Select All Department&nbsp;
+                                <br />
+                                @Html.DropDownList("DeptItem", Model.ZoneWiseDepartments, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="box-footer">
+            @Html.HiddenFor(m => m.pZoneName)
+            @Html.HiddenFor(m => m.pDeptName)
+            @Html.HiddenFor(m => m.pEntityName)
+            @Html.HiddenFor(m => m.pFinancialYear)
+            @Html.HiddenFor(m => m.ZoneInfoList)
+            @Html.HiddenFor(m => m.SelectedDeptList)
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            @Html.Partial("ReportsViewer")
+            <iframe src="~/ReportViewers/myBudgetReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>
+        </div>
+    }
+</div><!-- /.box -->
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true
+        });
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+            } else {
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', $("#ZoneInfoList").val().split(','));
+            }
+        });
+
+        $("#chkSelectAllDept").click(function () {
+            if ($("#chkSelectAllDept").is(':checked')) {
+                $("#DeptItem > option[value!='']").prop("selected", "selected");
+                $("#DeptItem").trigger("change");
+            } else {
+                $('#DeptItem').val(null).trigger('change');
+
+                $('#DeptItem').select2().select2('val', $("#SelectedDeptList").val().split(','));
+            }
+        });
+
+
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+
+        var _selectedDeptList = $("#SelectedDeptList").val().split(',');
+        $('#DeptItem').select2().select2('val', _selectedDeptList);
+
+
+        $("#btnSubmit").click(function () {
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            $("#pFinancialYear").val($("#financialPeriodId :selected").text());
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+
+            $("#pZoneName").val(option_ZoneItem);
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+
+            var option_DeptItem = $("#DeptItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+            console.log(option_DeptItem);
+            $("#pDeptName").val(option_DeptItem);
+            var deptIds = $('#DeptItem').val().toString();
+            $("#SelectedDeptList").val(deptIds);
+
+            return fnValidate()
+        });
+
+    });
+</script>

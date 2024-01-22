@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Transaction.AccVoucherInformation.EntityPlural");
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        var accVoucherInformationSearchGrid = new VistaGL.Transaction.AccVoucherInformationSearchGrid($('#GridDiv'), {});
+
+        var q = Q.parseQueryString();
+        if (q.VoucherTempId != null && q.VoucherTempId.length) {
+            accVoucherInformationSearchGrid.set_VoucherTempId(parseInt(q.VoucherTempId, 10));
+        }
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+        accVoucherInformationSearchGrid.OpenVoucher(q.VoucherTempId);
+
+    });
+</script>

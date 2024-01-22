@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="IncomeExpenditure" targetNamespace="http://tempuri.org/IncomeExpenditure.xsd" xmlns:mstns="http://tempuri.org/IncomeExpenditure.xsd" xmlns="http://tempuri.org/IncomeExpenditure.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="IncomeExpenditure" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="IncomeExpenditure" msprop:Generator_UserDSName="IncomeExpenditure">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="proc_acc_IncomeExpenditure" msprop:Generator_TableClassName="proc_acc_IncomeExpenditureDataTable" msprop:Generator_TableVarName="tableproc_acc_IncomeExpenditure" msprop:Generator_TablePropName="proc_acc_IncomeExpenditure" msprop:Generator_RowDeletingName="proc_acc_IncomeExpenditureRowDeleting" msprop:Generator_RowChangingName="proc_acc_IncomeExpenditureRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_IncomeExpenditureRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_IncomeExpenditureRowDeleted" msprop:Generator_UserTableName="proc_acc_IncomeExpenditure" msprop:Generator_RowChangedName="proc_acc_IncomeExpenditureRowChanged" msprop:Generator_RowEvArgName="proc_acc_IncomeExpenditureRowChangeEvent" msprop:Generator_RowClassName="proc_acc_IncomeExpenditureRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accountName" msprop:Generator_ColumnVarNameInTable="columnaccountName" msprop:Generator_ColumnPropNameInRow="accountName" msprop:Generator_ColumnPropNameInTable="accountNameColumn" msprop:Generator_UserColumnName="accountName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="accountGroup" msprop:Generator_ColumnVarNameInTable="columnaccountGroup" msprop:Generator_ColumnPropNameInRow="accountGroup" msprop:Generator_ColumnPropNameInTable="accountGroupColumn" msprop:Generator_UserColumnName="accountGroup" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Amount2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAmount2" msprop:Generator_ColumnPropNameInRow="Amount2" msprop:Generator_ColumnPropNameInTable="Amount2Column" msprop:Generator_UserColumnName="Amount2" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tmpSerial" msprop:Generator_ColumnVarNameInTable="columntmpSerial" msprop:Generator_ColumnPropNameInRow="tmpSerial" msprop:Generator_ColumnPropNameInTable="tmpSerialColumn" msprop:Generator_UserColumnName="tmpSerial" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Rpt_SP_ACC_IncomeExpenditure_M1" msprop:Generator_TableClassName="Rpt_SP_ACC_IncomeExpenditure_M1DataTable" msprop:Generator_TableVarName="tableRpt_SP_ACC_IncomeExpenditure_M1" msprop:Generator_RowChangedName="Rpt_SP_ACC_IncomeExpenditure_M1RowChanged" msprop:Generator_TablePropName="Rpt_SP_ACC_IncomeExpenditure_M1" msprop:Generator_RowDeletingName="Rpt_SP_ACC_IncomeExpenditure_M1RowDeleting" msprop:Generator_RowChangingName="Rpt_SP_ACC_IncomeExpenditure_M1RowChanging" msprop:Generator_RowEvHandlerName="Rpt_SP_ACC_IncomeExpenditure_M1RowChangeEventHandler" msprop:Generator_RowDeletedName="Rpt_SP_ACC_IncomeExpenditure_M1RowDeleted" msprop:Generator_RowClassName="Rpt_SP_ACC_IncomeExpenditure_M1Row" msprop:Generator_UserTableName="Rpt_SP_ACC_IncomeExpenditure_M1" msprop:Generator_RowEvArgName="Rpt_SP_ACC_IncomeExpenditure_M1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReportType" msprop:Generator_ColumnVarNameInTable="columnReportType" msprop:Generator_ColumnPropNameInRow="ReportType" msprop:Generator_ColumnPropNameInTable="ReportTypeColumn" msprop:Generator_UserColumnName="ReportType" type="xs:string" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" minOccurs="0" />
+              <xs:element name="ParentId" msprop:Generator_ColumnVarNameInTable="columnParentId" msprop:Generator_ColumnPropNameInRow="ParentId" msprop:Generator_ColumnPropNameInTable="ParentIdColumn" msprop:Generator_UserColumnName="ParentId" type="xs:int" minOccurs="0" />
+              <xs:element name="ParentName" msprop:Generator_ColumnVarNameInTable="columnParentName" msprop:Generator_ColumnPropNameInRow="ParentName" msprop:Generator_ColumnPropNameInTable="ParentNameColumn" msprop:Generator_UserColumnName="ParentName" type="xs:string" minOccurs="0" />
+              <xs:element name="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_UserColumnName="GroupName" type="xs:string" minOccurs="0" />
+              <xs:element name="SortingOrder" msprop:Generator_ColumnVarNameInTable="columnSortingOrder" msprop:Generator_ColumnPropNameInRow="SortingOrder" msprop:Generator_ColumnPropNameInTable="SortingOrderColumn" msprop:Generator_UserColumnName="SortingOrder" type="xs:int" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PreviousYearTotal" msprop:Generator_ColumnVarNameInTable="columnPreviousYearTotal" msprop:Generator_ColumnPropNameInRow="PreviousYearTotal" msprop:Generator_ColumnPropNameInTable="PreviousYearTotalColumn" msprop:Generator_UserColumnName="PreviousYearTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Symbol" msprop:Generator_ColumnVarNameInTable="columnSymbol" msprop:Generator_ColumnPropNameInRow="Symbol" msprop:Generator_ColumnPropNameInTable="SymbolColumn" msprop:Generator_UserColumnName="Symbol" type="xs:string" minOccurs="0" />
+              <xs:element name="BalanceBrought" msprop:Generator_ColumnVarNameInTable="columnBalanceBrought" msprop:Generator_ColumnPropNameInRow="BalanceBrought" msprop:Generator_ColumnPropNameInTable="BalanceBroughtColumn" msprop:Generator_UserColumnName="BalanceBrought" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BalanceBroughtPrevious" msprop:Generator_ColumnVarNameInTable="columnBalanceBroughtPrevious" msprop:Generator_ColumnPropNameInRow="BalanceBroughtPrevious" msprop:Generator_ColumnPropNameInTable="BalanceBroughtPreviousColumn" msprop:Generator_UserColumnName="BalanceBroughtPrevious" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PriorYearAdjustment" msprop:Generator_ColumnVarNameInTable="columnPriorYearAdjustment" msprop:Generator_ColumnPropNameInRow="PriorYearAdjustment" msprop:Generator_ColumnPropNameInTable="PriorYearAdjustmentColumn" msprop:Generator_UserColumnName="PriorYearAdjustment" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PriorYearAdjustmentPrevious" msprop:Generator_ColumnVarNameInTable="columnPriorYearAdjustmentPrevious" msprop:Generator_ColumnPropNameInRow="PriorYearAdjustmentPrevious" msprop:Generator_ColumnPropNameInTable="PriorYearAdjustmentPreviousColumn" msprop:Generator_UserColumnName="PriorYearAdjustmentPrevious" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RentalIncome" msprop:Generator_ColumnVarNameInTable="columnRentalIncome" msprop:Generator_ColumnPropNameInRow="RentalIncome" msprop:Generator_ColumnPropNameInTable="RentalIncomeColumn" msprop:Generator_UserColumnName="RentalIncome" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RentalIncomePrevious" msprop:Generator_ColumnVarNameInTable="columnRentalIncomePrevious" msprop:Generator_ColumnPropNameInRow="RentalIncomePrevious" msprop:Generator_ColumnPropNameInTable="RentalIncomePreviousColumn" msprop:Generator_UserColumnName="RentalIncomePrevious" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

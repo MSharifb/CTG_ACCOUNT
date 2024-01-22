@@ -1,0 +1,66 @@
+﻿@model VistaGL.Modules.Transaction.AccChequePreparation.ChequePrintData
+
+@{
+    Layout = null;
+}
+
+
+<section style="font-size: 12pt;">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div style="padding-left: 124mm;">
+                @{
+                    var chequeDate = @Model.ChequeDate;
+                    var charCount = 0;
+                }
+
+                @for (charCount = 0; charCount < chequeDate.Length; charCount++)
+                {
+                    switch (charCount)
+                    {
+                        case 0:
+                            @chequeDate[charCount]<span style="padding-right: 11px;"></span>
+                            break;
+                        case 1:
+                            @chequeDate[charCount]<span style="padding-right: 12px;"></span>
+                            break;
+                        case 2:
+                            @chequeDate[charCount]<span style="padding-right: 12px;"></span>
+                            break;
+                        case 3:
+                            @chequeDate[charCount]<span style="padding-right: 13px;"></span>
+                            break;
+                        case 4:
+                            @chequeDate[charCount]<span style="padding-right: 13px;"></span>
+                            break;
+                        case 5:
+                            @chequeDate[charCount]<span style="padding-right: 14px;"></span>
+                            break;
+                        case 6:
+                            @chequeDate[charCount]<span style="padding-right: 14px;"></span>
+                            break;
+                        case 7:
+                            @chequeDate[charCount]
+                            break;
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 33px;">
+        <div class="col-xs-12">
+            @Model.Payto
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 8px;">
+        <div class="col-xs-12">
+            @Model.AmountInWords
+            <div style="padding: 0 0 0 123mm; font-size: 14pt;">@Model.ChequeAmount</div>
+        </div>
+    </div>
+
+</section>

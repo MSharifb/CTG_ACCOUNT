@@ -1,0 +1,22 @@
+﻿
+namespace VistaGL.Transaction.Columns
+{
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using System;
+    using System.ComponentModel;
+    using System.Collections.Generic;
+    using System.IO;
+
+    [ColumnsScript("Transaction.AccBudgetCreation")]
+    [BasedOnRow(typeof(Entities.AccBudgetCreationRow), CheckNames = true)]
+    public class AccBudgetCreationColumns
+    {
+        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        public Int32 Id { get; set; }
+        public Int32 BudgetCircularId { get; set; }
+        public Int32 ZoneId { get; set; }
+        public Int32 DepartmentId { get; set; }
+    }
+}

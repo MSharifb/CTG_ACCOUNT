@@ -1,0 +1,396 @@
+﻿@using System.Globalization
+@model VistaGL.Common.DashboardPageModel
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["PageId"] = "Dashboard";
+}
+
+
+@section Head{
+    <link rel="stylesheet" href="~/Content/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="~/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+    <style type="text/css">
+        .dashboard-stat > tbody > tr.active td        {
+            background: #123456;
+            color: #fff;
+        }
+
+    </style>
+}
+
+
+
+
+@using (Html.BeginForm("Index", "Dashboard", FormMethod.Post, new { @id = "frm" }))
+{
+    @section ContentHeader{
+        <h1>Dashboard <small> by zone</small></h1>
+    }
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <div class="box-body">
+                    <div class="pull-left" style="padding-top: 5px; padding-right: 10px;">
+                        <b>Zone:</b>&nbsp;@Html.DropDownList("ZoneItem", Model.Zone, "Select One")
+                    </div>
+                    <div class="pull-left" style="padding-top: 5px; padding-right: 10px;">
+                        <b>From Date:</b>&nbsp;@Html.TextBoxFor(x => x.FromDate, "{0:dd-MM-yyyy}", new { @class = "date", @placeholder = "Please input from date" })
+                    </div>
+                    <div class="pull-left" style="padding-top: 5px; padding-right: 10px;">
+                        <b>To Date:</b>&nbsp;@Html.TextBoxFor(x => x.ToDate, "{0:dd-MM-yyyy}", new { @class = "date", @placeholder = "Please input to date" })
+                    </div>
+                    <div class="pull-left" style="padding-top: 5px; padding-right: 10px;">
+                        <input type="submit" value="Show Data" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>@Model.PreparedVoucher</h3>
+                    <p>Prepared Voucher</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" onclick="return PrintDashboard(printType.PreparedVoucher);" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>@Model.SubmittedVoucher</h3>
+                    <p>Submitted Voucher</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-arrow-swap"></i>
+                </div>
+                <a href="#" onclick="return PrintDashboard(printType.SubmittedVoucher);" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>@Model.ApprovedVoucher</h3>
+                    <p>Approved Voucher</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" onclick="return PrintDashboard(printType.ApprovedVoucher);" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-gray">
+                <div class="inner">
+                    <h3>@Model.PostedVoucher</h3>
+                    <p>Posted Voucher</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-checkmark"></i>
+                </div>
+                <a href="#" onclick="return PrintDashboard(printType.PostedVoucher);" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@Model.IssuedCheque</h3>
+                    <p>Issued Cheque</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-star"></i>
+                </div>
+                <a href="Reports/ChequeRegister?gotoDashboard=1" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+    </div>
+
+    <div class="row">
+        <section class="col-lg-12 connectedSortable">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <h3 class="box-title">Bank Today</h3>
+                </div>
+                <div class="box-body">
+                    <div class=".table-responsive">
+                        <table class="table table-striped table-bordered dashboard-stat">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Bank Name</th>
+                                    <th>Account Number</th>
+                                    <th align="right">Total Payment</th>
+                                    <th align="right">Total Receipt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.dashboardBankTransactions)
+                                {
+                                    <tr class="clickable-row">
+                                        <td>@item.ZoneCode</td>
+                                        <td>@item.bankName</td>
+                                        <td>@item.accountNumber</td>
+                                        <td class="align-right" style="min-width:150px;">@item.DebitAmount.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                        <td class="align-right" style="min-width:150px;">@item.CreditAmount.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    @*<div class="row">
+
+            <section class="col-lg-12 connectedSortable">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <h3 class="box-title">Statistics of Collections from Billing System</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class=".table-responsive">
+                            <table class="table table-striped table-bordered dashboard-stat">
+                                <thead>
+                                    <tr>
+                                        <th>Zone</th>
+                                        <th>Today</th>
+                                        <th>Same day last week</th>
+                                        <th>%</th>
+                                        <th>Same day last month</th>
+                                        <th>%</th>
+                                        <th>Yesterday</th>
+                                        <th>%</th>
+                                        <th>Last 7 days</th>
+                                        <th>Last 1 month</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.dashboardCollectionFromBillingSystem)
+                                    {
+                                        <tr>
+                                            <td>@item.zoneName</td>
+                                            <td class="align-right" style="min-width:110px;">@item.today.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                            <td class="align-right" style="min-width:100px;">@item.sameDayLastWeek.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                            <td class="align-right" @(item.PDiffBtwTodaySDLW < 0 ? "style=color:red" : "style=color:green") >@item.PDiffBtwTodaySDLW</td>
+                                            <td class="align-right" style="min-width:100px;">@item.sameDayLastMonth.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                            <td class="align-right" @(item.PDiffBtwTodaySDLM < 0 ? "style=color:red" : "style=color:green") >@item.PDiffBtwTodaySDLM</td>
+                                            <td class="align-right" style="min-width:110px;">@item.yesterday.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                            <td class="align-right" @(item.PDiffBtwTY < 0 ? "style=color:red" : "style=color:green") >@item.PDiffBtwTY</td>
+                                            <td class="align-right" style="min-width:120px;">@item.last7Days.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                            <td class="align-right" style="min-width:120px;">@item.last1Month.ToString("C2", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>*@
+
+    <div class="row">
+        <section class="col-lg-6 connectedSortable">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <i class="fa fa-comments-o"></i>
+                    <h3 class="box-title">Voucher Summary</h3>
+                </div>
+                <div class="box-body">
+                    <div class=".table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>All Prepared Voucher</td>
+                                    <td class="pull-right">@Model.TotalVoucher</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Approved Cheque Voucher</td>
+                                    <td class="pull-right">@Model.ApprovedChequeVoucher</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved Other Voucher</td>
+                                    <td class="pull-right">@Model.ApprovedOtherVoucher</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;-->&nbsp;Payment Voucher</td>
+                                    <td class="pull-right">@Model.ApprovedOtherPV</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;-->&nbsp;Receipt Voucher</td>
+                                    <td class="pull-right">@Model.ApprovedOtherRV</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;-->&nbsp;Journal Voucher</td>
+                                    <td class="pull-right">@Model.ApprovedOtherJV</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Number of Cheque Voucher</td>
+                                    <td class="pull-right">@Model.NumberofChequeVoucher</td>
+                                </tr>
+                                <tr>
+                                    <td>Number of Cheque Prepared</td>
+                                    <td class="pull-right">@Model.NumberofChequePrepared</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @*<section class="col-lg-6 connectedSortable">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <i class="fa fa-calendar-check-o"></i>
+                        <h3 class="box-title">Today's Receipts and Payments</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class=".table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>Opening Balance</td>
+                                        <td class="pull-right">@Model.TodayOpeningBalance.ToString("C", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Receipt</td>
+                                        <td class="pull-right">@Model.TodayReceiptAmount.ToString("C", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Payment</td>
+                                        <td class="pull-right">@Model.TodayPaymentAmount.ToString("C", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Closing Balance</td>
+                                        <td class="pull-right">@Model.TodayClosingBalance.ToString("C", CultureInfo.CreateSpecificCulture("bn-BD"))</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>*@
+    </div>
+
+        @Html.HiddenFor(m => m.CurrentZone)
+        @Html.HiddenFor(m => m.FromDate)
+        @Html.HiddenFor(m => m.ToDate)
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+        var _currentZone = $("#CurrentZone").val().split(',');
+        $('#ZoneItem').select2().select2('val', _currentZone);
+
+        $(".date").datepicker();
+
+        $('.dashboard-stat').on('click', '.clickable-row', function (event) {
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+    });
+
+    $('#ZoneItem').on('change', function () {
+
+        var _selectedZoneId = $('#ZoneItem').val();
+        $("#CurrentZone").val(_selectedZoneId);
+
+        this.form.submit();
+
+    });
+
+
+    var printType = {
+        "PreparedVoucher": 1,
+        "SubmittedVoucher": 2,
+        "ApprovedVoucher": 3,
+        "PostedVoucher": 4,
+        "IssuedCheque": 5
+    }
+
+    function PrintDashboard(pType) {
+        var _selectedZoneId = $('#ZoneItem').val();
+        var _selectedFromDate = $('#FromDate').val();
+        var _selectedToDate = $('#ToDate').val();
+
+        switch (pType) {
+            case printType.PreparedVoucher:
+                VistaGL.Common.ReportHelper.execute({
+                    reportKey: 'Dashboard.PrintPreparedVoucher',
+                    params: {
+                        ZoneId: _selectedZoneId,
+                        FromDate: _selectedFromDate,
+                        ToDate: _selectedToDate
+                    }
+                });
+                break;
+            case printType.SubmittedVoucher:
+                VistaGL.Common.ReportHelper.execute({
+                    reportKey: 'Dashboard.PrintSubmittedVoucher',
+                    params: {
+                        ZoneId: _selectedZoneId,
+                        FromDate: _selectedFromDate,
+                        ToDate: _selectedToDate
+                    }
+                });
+                break;
+            case printType.ApprovedVoucher:
+                VistaGL.Common.ReportHelper.execute({
+                    reportKey: 'Dashboard.PrintApprovedVoucher',
+                    params: {
+                        ZoneId: _selectedZoneId,
+                        FromDate: _selectedFromDate,
+                        ToDate: _selectedToDate
+                    }
+                });
+                break;
+            case printType.PostedVoucher:
+                VistaGL.Common.ReportHelper.execute({
+                    reportKey: 'Dashboard.PrintPostedVoucher',
+                    params: {
+                        ZoneId: _selectedZoneId,
+                        FromDate: _selectedFromDate,
+                        ToDate: _selectedToDate
+                    }
+                });
+                break;
+            case printType.IssuedCheque:
+                VistaGL.Common.ReportHelper.execute({
+                    reportKey: 'Dashboard.PrintIssuedCheque',
+                    params: {
+                        ZoneId: _selectedZoneId,
+                        FromDate: _selectedFromDate,
+                        ToDate: _selectedToDate
+                    }
+                });
+                break;
+
+            default:
+        }
+
+    }
+
+</script>

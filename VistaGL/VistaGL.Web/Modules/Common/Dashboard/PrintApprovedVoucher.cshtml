@@ -1,0 +1,51 @@
+﻿@model VistaGL.Modules.Common.Dashboard.DashboardPrintModel
+
+@{
+    //Layout = null;
+    ViewData["Title"] = @Model.Title;
+}
+
+
+<div style="border-bottom: 1px solid blueviolet;">
+    @Model.Title
+</div>
+<br />
+
+@{
+    var distinctVoucherTypes = Model.Detail.GroupBy(v => v.VoucherType).Select(g => g.First()).ToList();
+    int slNo = 0;
+}
+
+<div class="table-responsive">
+
+    @foreach (var vtItem in distinctVoucherTypes)
+    {
+    <div style="font-weight: bold;">Voucher Type: @vtItem.VoucherType</div>
+
+    <table class="table table-bordered" style="font-size: 8pt;">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 40px;">#</th>
+                <th style="width: 200px;">Voucher No</th>
+                <th style="width: 80px; alignment: right;">Cheque No</th>
+                <th style="width: 80px; alignment: right;">Amount</th>
+                <th style="width: 100px;">Voucher Date</th>
+                <th style="width: 200px;">Pay to or Receive From</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Detail.Where(v => v.VoucherType == @vtItem.VoucherType))
+            {
+            <tr>
+                <td>@(++slNo)</td>
+                <td align="center">@item.VoucherNo</td>
+                <td align="right">@item.ChequeNo</td>
+                <td align="right">@item.Amount</td>
+                <td align="center"> @Convert.ToDateTime(item.VoucherDate).ToShortDateString()</td>
+                <td>@item.PaytoOrReciveFrom</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+</div>

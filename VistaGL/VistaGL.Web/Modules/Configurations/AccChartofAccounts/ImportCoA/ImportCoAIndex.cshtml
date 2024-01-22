@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Configurations.AccChartofAccounts.EntityPlural");
+}
+
+<link href="~/Content/jsTree/themes/default/style.css" rel="stylesheet" />
+<script src="~/Scripts/jsTree3/jstree.js"></script>
+<div id="DialogDiv"></div>
+
+<script type="text/javascript">
+    var myDialogAsPanel;
+    jQuery(function () {
+        // first create a new dialog
+        myDialogAsPanel = new VistaGL.Configurations.ImportCoADialog();
+        // load a new entity if url doesn't contain an ID, or load order with ID specified in page URL
+        // here we use done event in second parameter, to be sure operation succeeded before showing the panel
+
+        //myDialogAsPanel.element.appendTo('#DialogDiv');
+
+        myDialogAsPanel.load({}, function () {
+            // if we didn't reach here, probably there is no order with specified ID in url
+            myDialogAsPanel.element.appendTo('#DialogDiv');
+        });
+    });
+</script>

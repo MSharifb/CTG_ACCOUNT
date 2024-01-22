@@ -1,0 +1,182 @@
+﻿
+namespace VistaGL.Transaction.Entities
+{
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Data.Mapping;
+    using System;
+    using System.ComponentModel;
+    using System.IO;
+
+    [ConnectionKey("ACCDB"), Module("Transaction"), TableName("[dbo].[acc_Budget_ForDepartment_Detail]")]
+    [DisplayName("Acc Budget For Department Detail"), InstanceName("Acc Budget For Department Detail")]
+    [ReadPermission("Administration:General")]
+    [ModifyPermission("Administration:General")]
+    public sealed class AccBudgetForDepartmentDetailRow : NRow, IIdRow
+    {
+
+        [DisplayName("Id"), Identity]
+        public Int32? Id
+        {
+            get { return Fields.Id[this]; }
+            set { Fields.Id[this] = value; }
+        }
+
+        [DisplayName("Budget For Department"), NotNull, ForeignKey("[dbo].[acc_Budget_ForDepartment]", "Id"), LeftJoin("jBudgetForDepartment")]
+        public Int32? BudgetForDepartmentId
+        {
+            get { return Fields.BudgetForDepartmentId[this]; }
+            set { Fields.BudgetForDepartmentId[this] = value; }
+        }
+
+        [DisplayName("Budget Group"), ForeignKey("[dbo].[acc_Budget_Group]", "Id"), LeftJoin("jBudgetGroup"), TextualField("BudgetGroupGroupName")]
+        public Int32? BudgetGroupId
+        {
+            get { return Fields.BudgetGroupId[this]; }
+            set { Fields.BudgetGroupId[this] = value; }
+        }
+
+        [DisplayName("Parent Id")]
+        public Int32? ParentId
+        {
+            get { return Fields.ParentId[this]; }
+            set { Fields.ParentId[this] = value; }
+        }
+
+        [DisplayName("Budget Head Id")]
+        public Int32? BudgetHeadId
+        {
+            get { return Fields.BudgetHeadId[this]; }
+            set { Fields.BudgetHeadId[this] = value; }
+        }
+
+        [DisplayName("Is Coa"), Column("IsCOA")]
+        public Boolean? IsCoa
+        {
+            get { return Fields.IsCoa[this]; }
+            set { Fields.IsCoa[this] = value; }
+        }
+
+        [DisplayName("Is Budget Head")]
+        public Boolean? IsBudgetHead
+        {
+            get { return Fields.IsBudgetHead[this]; }
+            set { Fields.IsBudgetHead[this] = value; }
+        }
+
+
+
+        [DisplayName("Budget For Department Budget Circular Id"), Expression("jBudgetForDepartment.[BudgetCircularId]")]
+        public Int32? BudgetForDepartmentBudgetCircularId
+        {
+            get { return Fields.BudgetForDepartmentBudgetCircularId[this]; }
+            set { Fields.BudgetForDepartmentBudgetCircularId[this] = value; }
+        }
+
+        [DisplayName("Budget For Department Zone Id"), Expression("jBudgetForDepartment.[ZoneId]")]
+        public Int32? BudgetForDepartmentZoneId
+        {
+            get { return Fields.BudgetForDepartmentZoneId[this]; }
+            set { Fields.BudgetForDepartmentZoneId[this] = value; }
+        }
+
+        [DisplayName("Budget For Department Department Id"), Expression("jBudgetForDepartment.[DepartmentId]")]
+        public Int32? BudgetForDepartmentDepartmentId
+        {
+            get { return Fields.BudgetForDepartmentDepartmentId[this]; }
+            set { Fields.BudgetForDepartmentDepartmentId[this] = value; }
+        }
+
+
+
+        [DisplayName("Budget Group Parent Id"), Expression("jBudgetGroup.[ParentId]")]
+        public Int32? BudgetGroupParentId
+        {
+            get { return Fields.BudgetGroupParentId[this]; }
+            set { Fields.BudgetGroupParentId[this] = value; }
+        }
+
+        [DisplayName("Budget Group Group Name"), Expression("jBudgetGroup.[GroupName]")]
+        public String BudgetGroupGroupName
+        {
+            get { return Fields.BudgetGroupGroupName[this]; }
+            set { Fields.BudgetGroupGroupName[this] = value; }
+        }
+
+        [DisplayName("Budget Group Sorting Order"), Expression("jBudgetGroup.[SortingOrder]")]
+        public Int32? BudgetGroupSortingOrder
+        {
+            get { return Fields.BudgetGroupSortingOrder[this]; }
+            set { Fields.BudgetGroupSortingOrder[this] = value; }
+        }
+
+        [DisplayName("Budget Group Is Active"), Expression("jBudgetGroup.[IsActive]")]
+        public Boolean? BudgetGroupIsActive
+        {
+            get { return Fields.BudgetGroupIsActive[this]; }
+            set { Fields.BudgetGroupIsActive[this] = value; }
+        }
+
+        [DisplayName("Budget Group Fund Control Id"), Expression("jBudgetGroup.[FundControlId]")]
+        public Int32? BudgetGroupFundControlId
+        {
+            get { return Fields.BudgetGroupFundControlId[this]; }
+            set { Fields.BudgetGroupFundControlId[this] = value; }
+        }
+
+
+
+        IIdField IIdRow.IdField
+        {
+            get { return Fields.Id; }
+        }
+
+        public static readonly RowFields Fields = new RowFields().Init();
+
+        public AccBudgetForDepartmentDetailRow()
+            : base(Fields)
+        {
+        }
+
+        public class RowFields : NRowFields
+        {
+
+            public Int32Field Id;
+
+            public Int32Field BudgetForDepartmentId;
+
+            public Int32Field BudgetGroupId;
+
+            public Int32Field ParentId;
+
+            public Int32Field BudgetHeadId;
+
+            public BooleanField IsCoa;
+
+            public BooleanField IsBudgetHead;
+
+
+
+            public Int32Field BudgetForDepartmentBudgetCircularId;
+
+            public Int32Field BudgetForDepartmentZoneId;
+
+            public Int32Field BudgetForDepartmentDepartmentId;
+
+
+
+            public Int32Field BudgetGroupParentId;
+
+            public StringField BudgetGroupGroupName;
+
+            public Int32Field BudgetGroupSortingOrder;
+
+            public BooleanField BudgetGroupIsActive;
+
+            public Int32Field BudgetGroupFundControlId;
+
+
+		}
+    }
+}

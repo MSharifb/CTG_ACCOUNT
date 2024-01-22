@@ -1,0 +1,3 @@
+﻿namespace VistaGL.Default {
+}
+

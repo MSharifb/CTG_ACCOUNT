@@ -1,0 +1,183 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Bank Reconciliation";
+}
+
+<!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header with-border grid-title">
+            <div class="title-text">Bank Reconciliation</div>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm("Index", "BankReconciliation", FormMethod.Post, new { id = "frm" }))
+        {
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if (!string.IsNullOrEmpty(Model.Message))
+                        {
+                            <div style="color:Red" class="@Model.ErrMsgClass">
+                                @Model.Message<br />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.Label("Entity", new { @class = "control-label" }) <label class="required-field">*</label>
+                            @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.Label("Account Head", new { @class = "control-label" }) <label class="required-field">*</label>
+                            @Html.DropDownListFor(m => m.COAId, Model.COAChildBank, "Select One", new { @class = "form-controlForDDL required ddl" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                                <label class="required-field">*</label>
+                                &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                            </div>
+                            @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            @Html.Label("From Date", new { @class = "control-label" }) <label class="required-field">*</label>
+                            @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control required date" })
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            @Html.Label("To Date", new { @class = "control-label" }) <label class="required-field">*</label>
+                            @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control required date" })
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div style="margin-top:20px">
+                                @Html.RadioButtonFor(model => model.BankReconcileType, "NR", new { @checked = true })@Html.Label("Not Reconciled")&nbsp;&nbsp;@Html.RadioButtonFor(model => model.BankReconcileType, "R")@Html.Label("Reconciled")&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.CheckBoxFor(model => model.IsOpenReportInNewTab)&nbsp;@Html.LabelFor(model => model.IsOpenReportInNewTab)
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                @Html.HiddenFor(m => m.pZoneName)
+                @Html.HiddenFor(m => m.pEntityName)
+                @Html.HiddenFor(m => m.pAccountHead)
+                @Html.HiddenFor(m => m.pCostCenter)
+                @Html.HiddenFor(m => m.ZoneInfoList)
+            </div>
+            @*<div class="form-group clearfix">
+                <div class="col-md-12 col-lg-12">
+                    <iframe name="frBankReconciliation" id="frBankReconciliation" src="" frameborder="0" style="width:950px;height:720px"></iframe>
+                </div>
+            </div>*@
+            if (!Model.IsError)
+            {
+                <div class="form-group clearfix">
+                    <div class="col-md-12 col-lg-12">
+                        @Html.Partial("ReportsViewer")
+                    </div>
+                </div>
+
+                <iframe src="~/ReportViewers/myBankReconReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1700px;"></iframe>
+            }
+        }
+    </div><!-- /.box -->
+
+<script type="text/javascript">
+    $(function () {
+
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true
+        });
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+            } else {
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', $("#ZoneInfoList").val().split(','));
+            }
+        });
+
+        $(".date").datepicker();
+
+        d = new Date();
+        date = d.format("dd-MM-yyyy");
+
+        if ($('#FromDate').val() == '') {
+            $('#FromDate').val(date);
+            $('#ToDate').val(date);
+        }
+
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+
+        $("#btnSubmit").click(function () {
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            $("#pAccountHead").val($("#COAId :selected").text());
+            //$("#pCostCenter").val($("#CostCenterId :selected").text());
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+
+            $("#pZoneName").val(option_ZoneItem);
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+            return fnValidate()
+        });
+    });
+
+
+</script>

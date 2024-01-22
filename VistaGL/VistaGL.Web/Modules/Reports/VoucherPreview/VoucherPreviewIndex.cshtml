@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Voucher Preview";
+    Layout = null;
+}
+
+
+
+@*<div class="row">
+    <div class="col-lg-10">
+        <span><a href="#">Previous</a></span>
+        <span> | </span>
+        <span><a href="#">Next</a></span>
+    </div>
+</div>*@
+<div class="row">
+    @Html.Partial("VoucherInfoReportsViewer")
+    <iframe src="~/ReportViewers/myVoucherInfoReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>
+</div>

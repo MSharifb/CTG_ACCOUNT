@@ -1,0 +1,176 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Income Expenditure";
+}
+
+
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">Income & Expenditure Information</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "IncomeExpenditure", FormMethod.Post, new { @id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Entity", new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FromDate, new { @class = "control-label" })@*&nbsp;@Html.CheckBoxFor(model => model.IsAddYear)*@
+                        @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control date required" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("As On Date", new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control date required" })
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="divDateRange2">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FromDate2, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.FromDate2, new { @class = "fixed-rpt-date form-control date" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ToDate2, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.ToDate2, new { @class = "fixed-rpt-date form-control date" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            @Html.HiddenFor(m => m.pZoneName)
+            @Html.HiddenFor(m => m.pEntityName)
+            @Html.HiddenFor(m => m.ZoneInfoList)
+            <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+        </div>
+
+        if (!Model.IsError)
+        {
+            <div class="form-group clearfix">
+                <div class="col-md-12 col-lg-12">
+                    @Html.Partial("AsOnReportsViewer")
+                </div>
+            </div>
+            <iframe src="~/ReportViewers/myAuditReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>
+        }
+    }
+</div><!-- /.box -->
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true
+        });
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+            } else {
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', $("#ZoneInfoList").val().split(','));
+            }
+        });
+
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList)
+        $(".date").datepicker();
+
+        d = new Date();
+        date = d.format("dd-MM-yyyy");
+        if ($('#FromDate').val() == '') {
+            $('#FromDate').val(date);
+            $('#ToDate').val(date);
+        }
+
+        function fromDate2(dateStr) {
+            var parts = dateStr.split("-");
+            var date = new Date(parts[2] - 2, parts[1] - 1, parts[0] - 1);
+
+            var year = date.getFullYear();
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            return day + '-' + month + '-' + year;
+        }
+
+        function toDate2(dateStr) {
+            var parts = dateStr.split("-");
+            var date = new Date(parts[2] - 1, parts[1] - 1, parts[0] - 1);
+
+            var year = date.getFullYear();
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            return day + '-' + month + '-' + year;
+        }
+
+        $("#FromDate").on('change', function () {
+            $('#FromDate2').val(fromDate2($('#FromDate').val()));
+            $('#ToDate2').val(toDate2($('#FromDate').val()));
+        });
+
+        $('#divDateRange2').hide();
+        $("#IsAddYear").on('click', function () {
+            if ($(this).is(':checked')) {
+                $('#divDateRange2').show();
+            }
+            else {
+                $('#divDateRange2').hide();
+            }
+        });
+        $("#btnSubmit").click(function () {
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+
+            $("#pZoneName").val(option_ZoneItem);
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+
+            return fnValidate()
+        });
+
+
+    });
+
+
+</script>

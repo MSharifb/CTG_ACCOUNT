@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Transaction.AccBankReconciliationDirect.EntityPlural");
+}
+
+<!-- Custom Tabs -->
+<div class="nav-tabs-custom">
+    @*<div class="tab-pane active" id="tab_1">
+            <div id="BankReconciliationDiv"></div>
+        </div>*@
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_1" data-toggle="tab">Bank Reconciliation</a></li>
+        <li class=""><a href="#tab_2" data-toggle="tab">Direct Bank Reconciliation</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+            <div id="BankReconciliationDiv"></div>
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane " id="tab_2">
+            <div id="GridDiv"></div>
+        </div>
+        <!-- /.tab-pane -->
+        <!-- /.tab-pane -->
+    </div>
+    <!-- /.tab-content -->
+</div>
+<!-- nav-tabs-custom -->
+
+
+<script type="text/javascript">
+    jQuery(function () {
+
+        //BR
+        var BR = new VistaGL.Transaction.BankReconciliationVoucherGrid($('#BankReconciliationDiv'), {}).init();
+        Q.initFullHeightGridPage($('#BankReconciliationDiv'));
+
+        //Direct BR
+        var directBR = new VistaGL.Transaction.AccBankReconciliationDirectGrid($('#GridDiv'), {}).init();
+        Q.initFullHeightGridPage($('#GridDiv'));
+
+
+
+
+        $("#tab_2").append($("#GridDiv"));
+        //BR.refresh();
+        //bs tab change event
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = $(e.target).attr("href") // activated tab
+            if (target == '#tab_1') {
+                BR.refresh();
+            } else {
+
+                directBR.refresh();
+                Q.initFullHeightGridPage($('#GridDiv'));
+            }
+        });
+    });
+</script>

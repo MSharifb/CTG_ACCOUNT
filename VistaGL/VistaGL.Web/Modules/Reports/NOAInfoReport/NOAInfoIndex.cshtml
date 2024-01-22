@@ -1,0 +1,191 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Contractor Bill Register";
+}
+
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">Contractor Bill Register</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "NOAInfo", FormMethod.Post, new { id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                            <label class="required-field">*</label>
+                            &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                        </div>
+                        @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Entity", new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="caption">
+                            @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                            <label class="required-field">*</label>
+                            &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                        </div>
+                        <div class="form-control">
+                            @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Select Sub-Ledger", new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.CostCenterId, Model.CostCenterList, "Select One", new { @class = "form-controlForDDL ddl" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("NOA Number", new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.DropDownListFor(m => m.NoaId, Model.NOANumberList, "All", new { @class = "form-controlForDDL ddl" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.Label("From Date", new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control required date" })
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.Label("To Date", new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control required date" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            @Html.HiddenFor(m => m.pZoneName)
+            @Html.HiddenFor(m => m.pEntityName)
+            @Html.HiddenFor(m => m.pAccountHead)
+            @Html.HiddenFor(m => m.pCostCenter)
+            @Html.HiddenFor(m => m.ZoneInfoList)
+            <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+        </div>
+
+        if (!Model.IsError)
+        {
+            <div class="form-group clearfix">
+                <div class="col-md-12 col-lg-12">
+                    @Html.Partial("ReportsViewerASOn")
+                </div>
+            </div>
+        }
+    }
+</div><!-- /.box -->
+
+<script type="text/javascript">
+    $(function () {
+
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true,
+            minimumInputLength: 1
+        });
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+            } else {
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', $("#ZoneInfoList").val().split(','));
+            }
+        });
+
+        $(".date").datepicker();
+        d = new Date();
+        date = d.format("dd-MM-yyyy");
+        if ($('#FromDate').val() == '') {
+            $('#FromDate').val(date);
+            $('#ToDate').val(date);
+        }
+
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+
+        $("#btnSubmit").click(function () {
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            $("#pAccountHead").val($("#COAId :selected").text());
+            //$("#pCostCenter").val($("#CostCenterId :selected").text());
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+
+            $("#pZoneName").val(option_ZoneItem);
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+            return fnValidate()
+        });
+
+        $("#CostCenterId").change(function () {
+            var costCenterId = $("#CostCenterId").val();
+            var stepSelect = $('#NoaId');
+            stepSelect.empty();
+            stepSelect.append($('<option/>', {
+                value: '0',
+                text: 'All'
+            }));
+
+            if (costCenterId != null && costCenterId != '') {
+                $.getJSON('@Url.Action("GetNOAInfo", "NOAInfo")', { costCenterId: costCenterId }, function (data) {
+                    console.log(data);
+                    $.each(data, function (index, step) {
+                        console.log(step);
+
+                        stepSelect.append($('<option/>', {
+                            value: step.Value,
+                            text: step.Text
+                        }));
+                    });
+                });
+            }
+        });
+    });
+
+
+</script>

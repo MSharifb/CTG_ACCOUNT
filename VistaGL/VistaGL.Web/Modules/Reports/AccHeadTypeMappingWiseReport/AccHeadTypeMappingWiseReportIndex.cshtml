@@ -1,0 +1,247 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "VAT/TAX Report";
+}
+
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">VAT & TAX Report</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "AccHeadTypeMappingWiseReport", FormMethod.Post, new { @id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                            <label class="required-field">*</label>
+                            &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                        </div>
+                        @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.Label("Entity", new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FromDate, new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control required date" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ToDate, new { @class = "control-label" }) <label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control required date" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.accHeadTypeMappingList, new { @class = "control-label" }) <label class="required-field">*</label>
+                        <br />
+                        @Html.DropDownList("AccHeadTypeItem", Model.AccHeadTypeMapping, "", new { @class = "required ddl style-AccHeadType", @multiple = "multiple" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <b>Following options are applicable for single Acc. Head Type selection.</b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    @Html.CheckBoxFor(model => model.ShowWithVoucherNo)&nbsp;@Html.LabelFor(model => model.ShowWithVoucherNo)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    @Html.CheckBoxFor(model => model.IsWithChequeNo)&nbsp;@Html.LabelFor(model => model.IsWithChequeNo, new { @class = "js-label-withChequeNo" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    @Html.CheckBoxFor(model => model.ShowSubledgerWiseTotal)&nbsp;@Html.LabelFor(model => model.ShowSubledgerWiseTotal, new { @class = "js-label-subledgerwiseTotal" })
+                </div>
+            </div>
+            @*<div class="row">
+                    <div class="col-lg-9">
+                        @Html.CheckBoxFor(model => model.IgnoreToDateForDebitVoucher)&nbsp;@Html.LabelFor(model => model.IgnoreToDateForDebitVoucher, new { })
+                    </div>
+                </div>*@
+        </div>
+
+        <div class="box-footer">
+            @Html.HiddenFor(m => m.pZoneName)
+            @Html.HiddenFor(m => m.pEntityName)
+            @Html.HiddenFor(m => m.pAccountHead)
+            @Html.HiddenFor(m => m.ZoneInfoList)
+            @Html.HiddenFor(m => m.accHeadTypeMappingList)            
+
+            <div class="row">
+                <div class="col-lg-9">
+                    @Html.CheckBoxFor(model => model.IsOpenReportInNewTab)&nbsp;@Html.LabelFor(model => model.IsOpenReportInNewTab)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-9">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+                </div>
+            </div>
+
+        </div>
+        if (!Model.IsError)
+        {
+            <div class="form-group clearfix">
+                <div class="col-md-12 col-lg-12">
+                    @Html.Partial("ReportsViewer")
+                </div>
+            </div>
+
+            <iframe src="~/ReportViewers/myReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1700px;"></iframe>
+        }
+    }
+</div><!-- /.box -->
+
+<style>
+    .fixed-rpt-date {
+        width: 88% !important;
+    }
+
+    .style-AccHeadType {
+        width: 80% !important;
+    }
+</style>
+<script type="text/javascript">
+
+
+    var changeStyleofShowSubledgerWiseTotalField = function (selected) {
+        $('#ShowSubledgerWiseTotal').prop('disabled', false);
+        $('.js-label-subledgerwiseTotal').css('color', 'black');
+
+        $('#ShowWithVoucherNo').prop('disabled', false);
+        $('#IsWithChequeNo').prop('disabled', false);
+
+        if (selected > 1) {
+            $('#ShowSubledgerWiseTotal').prop('disabled', true);
+            $('.js-label-subledgerwiseTotal').css('color', 'gray');
+            $('#ShowSubledgerWiseTotal').prop('checked', false);
+
+            $('#ShowWithVoucherNo').prop('disabled', true);
+            $('#IsWithChequeNo').prop('disabled', true);
+
+            $('#ShowWithVoucherNo').prop('checked', false);
+            $('#IsWithChequeNo').prop('checked', false);
+        }
+    }
+
+    $(function () {
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true
+        });
+
+        //--***
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                //
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+                //
+            } else {
+                //
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+            }
+        });
+
+        $(".date").datepicker();
+
+        d = new Date();
+        date = d.format("dd-MM-yyyy");
+        if ($('#FromDate').val() == '') {
+            $('#FromDate').val(date);
+            $('#ToDate').val(date);
+        }
+
+        //--***
+
+        $("#ShowSubledgerWiseTotal").click(function () {
+            if ($("#ShowSubledgerWiseTotal").is(':checked')) {
+                $('#ShowWithVoucherNo').prop('checked', false);
+                $('#IsWithChequeNo').prop('checked', false);
+
+                $('#ShowWithVoucherNo').prop('disabled', true);
+                $('#IsWithChequeNo').prop('disabled', true);
+            } else {
+                $('#ShowWithVoucherNo').prop('disabled', false);
+                $('#IsWithChequeNo').prop('disabled', false);
+            }
+        });
+
+        //--***
+
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+
+        //--***
+
+        $('#AccHeadTypeItem').on("change", function (e) {
+            changeStyleofShowSubledgerWiseTotalField(e.val.length);
+        });
+
+        var _AccHeadTypeList = $("#accHeadTypeMappingList").val().split(',').filter(function (item) {
+            return item.length != 0;
+        });
+        $('#AccHeadTypeItem').select2().select2('val', _AccHeadTypeList);
+
+        changeStyleofShowSubledgerWiseTotalField(_AccHeadTypeList.length);
+
+        //--***
+
+        $("#btnSubmit").click(function () {
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            //$("#pAccountHead").val($("#COAId :selected").text());
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+            $("#pZoneName").val(option_ZoneItem);
+
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+
+            var accHeadType = $('#AccHeadTypeItem').val().toString();
+            $("#accHeadTypeMappingList").val(accHeadType);
+
+            return fnValidate();
+        });
+    });
+
+</script>

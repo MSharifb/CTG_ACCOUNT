@@ -1,0 +1,99 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<div class="box box-primary">
+
+    <!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "BankAdviceLetterTemplateInfo", FormMethod.Post, new { @id = "frm" }))
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                @if (!string.IsNullOrEmpty(Model.Message))
+                {
+                    <div style="color:Red" class="@Model.ErrMsgClass">
+                        @Model.Message<br />
+                    </div>
+                }
+            </div>
+        </div>
+        if (!Model.IsError)
+        {
+            <div class="form-group clearfix">
+                <div class="col-md-12 col-lg-12">
+                    @*@Html.Partial("BankAdviceLetterReportViwer")*@
+                    <iframe src="~/ReportViewers/myBankAdviceLetterReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            return fnValidate()
+        });
+    });
+
+
+    function LoadBranch() {
+        var bankId = $('#BankId').val();
+        var branch = $('#BranchId');
+        branch.empty();
+        branch.append($('<option/>', {
+            Value: '', Text: 'Select One'
+        }));
+        $("#BranchId").select2("val", "");
+        if (bankId != null && bankId != '') {
+            $.getJSON('@Url.Action("LoadBranch")', { bankId: bankId }, function (data) {
+                $.each(data, function (index, d) {
+                    branch.append($('<option/>', {
+                        value: d.Value,
+                        text: d.Text
+                    }));
+                });
+            });
+        }
+    }
+
+    function LoadAccount() {
+        var bankId = $('#BankId').val();
+        var branchId = $('#BranchId').val();
+        var bankAccount = $('#BankAccountId');
+        bankAccount.empty();
+        bankAccount.append($('<option/>', {
+            Value: '', Text: 'Select One'
+        }));
+        bankAccount.select2("val", "");
+        if (branchId != null && branchId != '') {
+            $.getJSON('@Url.Action("LoadBankAccount")', { bankId: bankId, branchId: branchId }, function (data) {
+                $.each(data, function (index, d) {
+                    bankAccount.append($('<option/>', {
+                        value: d.Value,
+                        text: d.Text
+                    }));
+                });
+            });
+        }
+    }
+
+    function LoadDuplication() {
+        var bankAccountId = $('#BankAccountId').val();
+        if (bankAccountId != null && bankAccountId != '') {
+            $("#MemorandumNo").val('');
+            $("#Duplication").val('');
+
+            $.getJSON('@Url.Action("LoadDuplication")', { bankAccountId: bankAccountId }, function (data) {
+                $("#MemorandumNo").val(data.MemorandumNo);
+                $("#Duplication").val(data.Duplication);
+            });
+        }
+
+    }
+
+</script>

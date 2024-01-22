@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSCostCenterSchedule" targetNamespace="http://tempuri.org/DSCostCenterSchedule.xsd" xmlns:mstns="http://tempuri.org/DSCostCenterSchedule.xsd" xmlns="http://tempuri.org/DSCostCenterSchedule.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSCostCenterSchedule" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSCostCenterSchedule" msprop:Generator_UserDSName="DSCostCenterSchedule">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Rpt_SP_ACC_NotesProcessCostCenterWise" msprop:Generator_TableClassName="Rpt_SP_ACC_NotesProcessCostCenterWiseDataTable" msprop:Generator_TableVarName="tableRpt_SP_ACC_NotesProcessCostCenterWise" msprop:Generator_RowChangedName="Rpt_SP_ACC_NotesProcessCostCenterWiseRowChanged" msprop:Generator_TablePropName="Rpt_SP_ACC_NotesProcessCostCenterWise" msprop:Generator_RowDeletingName="Rpt_SP_ACC_NotesProcessCostCenterWiseRowDeleting" msprop:Generator_RowChangingName="Rpt_SP_ACC_NotesProcessCostCenterWiseRowChanging" msprop:Generator_RowEvHandlerName="Rpt_SP_ACC_NotesProcessCostCenterWiseRowChangeEventHandler" msprop:Generator_RowDeletedName="Rpt_SP_ACC_NotesProcessCostCenterWiseRowDeleted" msprop:Generator_RowClassName="Rpt_SP_ACC_NotesProcessCostCenterWiseRow" msprop:Generator_UserTableName="Rpt_SP_ACC_NotesProcessCostCenterWise" msprop:Generator_RowEvArgName="Rpt_SP_ACC_NotesProcessCostCenterWiseRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accountName" msprop:Generator_ColumnVarNameInTable="columnaccountName" msprop:Generator_ColumnPropNameInRow="accountName" msprop:Generator_ColumnPropNameInTable="accountNameColumn" msprop:Generator_UserColumnName="accountName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CostCenter" msprop:Generator_ColumnVarNameInTable="columnCostCenter" msprop:Generator_ColumnPropNameInRow="CostCenter" msprop:Generator_ColumnPropNameInTable="CostCenterColumn" msprop:Generator_UserColumnName="CostCenter">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CostCenterOBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCostCenterOBalance" msprop:Generator_ColumnPropNameInRow="CostCenterOBalance" msprop:Generator_ColumnPropNameInTable="CostCenterOBalanceColumn" msprop:Generator_UserColumnName="CostCenterOBalance" type="xs:double" minOccurs="0" />
+              <xs:element name="debitAmount" msprop:Generator_ColumnVarNameInTable="columndebitAmount" msprop:Generator_ColumnPropNameInRow="debitAmount" msprop:Generator_ColumnPropNameInTable="debitAmountColumn" msprop:Generator_UserColumnName="debitAmount" type="xs:double" />
+              <xs:element name="creditAmount" msprop:Generator_ColumnVarNameInTable="columncreditAmount" msprop:Generator_ColumnPropNameInRow="creditAmount" msprop:Generator_ColumnPropNameInTable="creditAmountColumn" msprop:Generator_UserColumnName="creditAmount" type="xs:double" />
+              <xs:element name="closing_balance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnclosing_balance" msprop:Generator_ColumnPropNameInRow="closing_balance" msprop:Generator_ColumnPropNameInTable="closing_balanceColumn" msprop:Generator_UserColumnName="closing_balance" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

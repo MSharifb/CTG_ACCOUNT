@@ -1,0 +1,14 @@
+﻿.select2-search input[type=text] {
+    padding: 1px 20px 1px 5px;
+    font-size: 1.4em;
+    color: orangered;
+}
+
+.select2-search input {
+    min-height: 15px;
+}
+
+
+.s-Form .field {
+    padding: 2px 3px;
+}

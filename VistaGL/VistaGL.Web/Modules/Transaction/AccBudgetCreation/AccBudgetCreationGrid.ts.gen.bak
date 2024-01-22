@@ -1,0 +1,16 @@
+﻿
+namespace VistaGL.Transaction {
+
+    @Serenity.Decorators.registerClass()
+    export class AccBudgetCreationGrid extends Serenity.EntityGrid<AccBudgetCreationRow, any> {
+        protected getColumnsKey() { return 'Transaction.AccBudgetCreation'; }
+        protected getDialogType() { return AccBudgetCreationDialog; }
+        protected getIdProperty() { return AccBudgetCreationRow.idProperty; }
+        protected getLocalTextPrefix() { return AccBudgetCreationRow.localTextPrefix; }
+        protected getService() { return AccBudgetCreationService.baseUrl; }
+
+        constructor(container: JQuery) {
+            super(container);
+        }
+    }
+}

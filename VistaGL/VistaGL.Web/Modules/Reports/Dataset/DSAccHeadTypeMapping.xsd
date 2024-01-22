@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSAccHeadTypeMapping" targetNamespace="http://tempuri.org/DSAccHeadTypeMapping.xsd" xmlns:mstns="http://tempuri.org/DSAccHeadTypeMapping.xsd" xmlns="http://tempuri.org/DSAccHeadTypeMapping.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSAccHeadTypeMapping" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSAccHeadTypeMapping" msprop:Generator_UserDSName="DSAccHeadTypeMapping">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Rpt_SP_ACC_AccHeadTypeMappingWise" msprop:Generator_TableClassName="Rpt_SP_ACC_AccHeadTypeMappingWiseDataTable" msprop:Generator_TableVarName="tableRpt_SP_ACC_AccHeadTypeMappingWise" msprop:Generator_RowChangedName="Rpt_SP_ACC_AccHeadTypeMappingWiseRowChanged" msprop:Generator_TablePropName="Rpt_SP_ACC_AccHeadTypeMappingWise" msprop:Generator_RowDeletingName="Rpt_SP_ACC_AccHeadTypeMappingWiseRowDeleting" msprop:Generator_RowChangingName="Rpt_SP_ACC_AccHeadTypeMappingWiseRowChanging" msprop:Generator_RowEvHandlerName="Rpt_SP_ACC_AccHeadTypeMappingWiseRowChangeEventHandler" msprop:Generator_RowDeletedName="Rpt_SP_ACC_AccHeadTypeMappingWiseRowDeleted" msprop:Generator_RowClassName="Rpt_SP_ACC_AccHeadTypeMappingWiseRow" msprop:Generator_UserTableName="Rpt_SP_ACC_AccHeadTypeMappingWise" msprop:Generator_RowEvArgName="Rpt_SP_ACC_AccHeadTypeMappingWiseRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="costCenterName" msprop:Generator_ColumnVarNameInTable="columncostCenterName" msprop:Generator_ColumnPropNameInRow="costCenterName" msprop:Generator_ColumnPropNameInTable="costCenterNameColumn" msprop:Generator_UserColumnName="costCenterName" type="xs:string" minOccurs="0" />
+              <xs:element name="accountName" msprop:Generator_ColumnVarNameInTable="columnaccountName" msprop:Generator_ColumnPropNameInRow="accountName" msprop:Generator_ColumnPropNameInTable="accountNameColumn" msprop:Generator_UserColumnName="accountName" type="xs:string" minOccurs="0" />
+              <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:double" minOccurs="0" />
+              <xs:element name="debitAmount" msprop:Generator_ColumnVarNameInTable="columndebitAmount" msprop:Generator_ColumnPropNameInRow="debitAmount" msprop:Generator_ColumnPropNameInTable="debitAmountColumn" msprop:Generator_UserColumnName="debitAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="creditAmount" msprop:Generator_ColumnVarNameInTable="columncreditAmount" msprop:Generator_ColumnPropNameInRow="creditAmount" msprop:Generator_ColumnPropNameInTable="creditAmountColumn" msprop:Generator_UserColumnName="creditAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="ZoneName" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName" type="xs:string" minOccurs="0" />
+              <xs:element name="VoucherNo" msprop:Generator_ColumnVarNameInTable="columnVoucherNo" msprop:Generator_ColumnPropNameInRow="VoucherNo" msprop:Generator_ColumnPropNameInTable="VoucherNoColumn" msprop:Generator_UserColumnName="VoucherNo" type="xs:string" minOccurs="0" />
+              <xs:element name="voucherDate" msprop:Generator_ColumnVarNameInTable="columnvoucherDate" msprop:Generator_ColumnPropNameInRow="voucherDate" msprop:Generator_ColumnPropNameInTable="voucherDateColumn" msprop:Generator_UserColumnName="voucherDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ChartofAccountName" msprop:Generator_ColumnVarNameInTable="columnChartofAccountName" msprop:Generator_ColumnPropNameInRow="ChartofAccountName" msprop:Generator_ColumnPropNameInTable="ChartofAccountNameColumn" msprop:Generator_UserColumnName="ChartofAccountName" type="xs:string" minOccurs="0" />
+              <xs:element name="chequeNo" msprop:Generator_ColumnVarNameInTable="columnchequeNo" msprop:Generator_ColumnPropNameInRow="chequeNo" msprop:Generator_ColumnPropNameInTable="chequeNoColumn" msprop:Generator_UserColumnName="chequeNo" type="xs:string" minOccurs="0" />
+              <xs:element name="chequeDate" msprop:Generator_ColumnVarNameInTable="columnchequeDate" msprop:Generator_ColumnPropNameInRow="chequeDate" msprop:Generator_ColumnPropNameInTable="chequeDateColumn" msprop:Generator_UserColumnName="chequeDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

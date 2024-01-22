@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Transaction.AccTransactionTypeAssign.EntityPlural");
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new VistaGL.Transaction.AccTransactionTypeAssignGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>
+
+@*<link href="~/Content/jsTree/docs.css" rel="stylesheet" />*@
+<link href="~/Content/jsTree/themes/default/style.css" rel="stylesheet" />
+<script src="~/Scripts/jsTree3/jstree.js"></script>

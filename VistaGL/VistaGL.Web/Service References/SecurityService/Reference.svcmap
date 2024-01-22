@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d3bb7712-a21a-4a17-a65b-e2ce82329d8f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://pc88:9101/ERP_BEPZA_Service/UserManagementService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserManagementService1.wsdl" MetadataType="Wsdl" ID="cd7ae076-de72-472d-b104-5f8b763f5037" SourceId="1" SourceUrl="http://pc88:9101/ERP_BEPZA_Service/UserManagementService.svc?wsdl" />
+    <MetadataFile FileName="UserManagementService4.xsd" MetadataType="Schema" ID="7e4dacd6-c822-4e88-bb02-56365a6a1583" SourceId="1" SourceUrl="http://pc88:9101/ERP_BEPZA_Service/UserManagementService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UserManagementService41.xsd" MetadataType="Schema" ID="9d42f3d1-d3df-4885-9017-572c1f7f8c86" SourceId="1" SourceUrl="http://pc88:9101/ERP_BEPZA_Service/UserManagementService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserManagementService42.xsd" MetadataType="Schema" ID="f50111b2-39ac-46d7-ad8a-a7994c5c38cc" SourceId="1" SourceUrl="http://pc88:9101/ERP_BEPZA_Service/UserManagementService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserManagementService43.xsd" MetadataType="Schema" ID="9ef519f5-4647-46da-b5de-20a06082da53" SourceId="1" SourceUrl="http://pc88:9101/ERP_BEPZA_Service/UserManagementService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserManagementService1.disco" MetadataType="Disco" ID="fd694db0-b9d0-43e1-b19d-c56e8a624258" SourceId="1" SourceUrl="http://pc88:9101/ERP_BEPZA_Service/UserManagementService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

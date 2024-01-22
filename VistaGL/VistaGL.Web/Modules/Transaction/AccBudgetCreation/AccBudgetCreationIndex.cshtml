@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Transaction.AccBudgetCreation.EntityPlural");
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        var budgetGrid = new VistaGL.Transaction.AccBudgetCreationGrid($('#GridDiv'), {}).init();
+
+        var q = Q.parseQueryString();
+        if (q.BudgetForDepartmentDepartmentId != null && q.BudgetForDepartmentDepartmentId.length) {
+            budgetGrid.set_shippingState(parseInt(q.BudgetForDepartmentDepartmentId, 10));
+        }
+        if (q.BudgetForDepartmentZoneId != null && q.BudgetForDepartmentZoneId.length) {
+            budgetGrid.set_zone(parseInt(q.BudgetForDepartmentZoneId, 10));
+        }
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

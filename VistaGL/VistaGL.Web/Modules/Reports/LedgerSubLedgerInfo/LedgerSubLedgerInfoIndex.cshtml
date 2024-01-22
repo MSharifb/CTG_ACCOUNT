@@ -1,0 +1,257 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Ledger Info";
+}
+
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">Ledger and Sub Ledger Information</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "LedgerSubLedgerInfo", FormMethod.Post, new { id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.Label("Entity", new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                                <label class="required-field">*</label>
+                                &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                                <br />
+                                @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FromDate, new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control required date" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ToDate, new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control required date" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.Label("Account Head", new { @class = "control-label" })
+                                @Html.DropDownListFor(m => m.COAId, Model.COAChild, "Select One", new { @class = "form-controlForDDL ddl" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.Label("Sub Ledger", new { @class = "control-label" })
+                                @Html.DropDownListFor(m => m.CostCenterId, Model.AllCostCenters, "Select One", new { @class = "form-controlForDDL ddl" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group" id="reportType">
+                                @Html.RadioButtonFor(m => m.TransactionType, "L", new { @class = "igTranType", @id = "rdAL", @onclick = "ToggleTransactionType(rdAL)", @checked = true }) @Html.Label("Show Ledger") <br />
+                                @Html.RadioButtonFor(m => m.TransactionType, "S", new { @class = "igTranType", @id = "rdAS", @onclick = "ToggleTransactionType(rdAS)" }) @Html.Label("Show Schedule (By Account Head)") <br />
+                                @Html.RadioButtonFor(m => m.TransactionType, "CS", new { @class = "igTranType", @id = "rdCS", @onclick = "ToggleTransactionType(rdCS)" }) @Html.Label("Show Consolidated Schedule") <br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.RadioButtonFor(m => m.TransactionType, "SAS", new { @class = "igTranType", @id = "rdSAS", @onclick = "ToggleTransactionType(rdSAS)" }) @Html.Label("Show Adjustment Schedule") <br />
+                                @Html.RadioButtonFor(m => m.TransactionType, "SUAS", new { @class = "igTranType", @id = "rdSUAS", @onclick = "ToggleTransactionType(rdSUAS)" }) @Html.Label("Show Unadjustment Schedule") <br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="divWithOpening">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.CheckBoxFor(model => model.IsWithOpening)&nbsp;@Html.LabelFor(model => model.IsWithOpening) <br />
+                                @Html.CheckBoxFor(model => model.IsWithNarration)&nbsp;@Html.LabelFor(model => model.IsWithNarration) <br />
+                                @Html.CheckBoxFor(model => model.IsWithPayto)&nbsp;@Html.LabelFor(model => model.IsWithPayto) <br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divScheduleFeature">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.CheckBoxFor(model => model.ShowSubledgersWithoutParent)&nbsp;@Html.LabelFor(model => model.ShowSubledgersWithoutParent)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.CheckBoxFor(model => model.ShowInReceiptPaymentFormat)&nbsp;@Html.LabelFor(model => model.ShowInReceiptPaymentFormat)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="box-footer">
+            @Html.HiddenFor(m => m.pZoneName)
+            @Html.HiddenFor(m => m.pEntityName)
+            @Html.HiddenFor(m => m.pAccountHead)
+            @Html.HiddenFor(m => m.pCostCenter)
+            @Html.HiddenFor(m => m.ZoneInfoList)
+            @Html.HiddenFor(m => m.TransactionType)
+            @Html.HiddenFor(m => m.IsWithOpening)
+            @Html.HiddenFor(m => m.IsWithNarration)
+
+
+            <div class="row">
+                <div class="col-lg-9">
+                    @Html.CheckBoxFor(model => model.IsOpenReportInNewTab)&nbsp;@Html.LabelFor(model => model.IsOpenReportInNewTab)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-9">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+                </div>
+            </div>
+            
+        </div>
+
+        if (!Model.IsError)
+        {
+            <div class="row">
+                <div class="form-group clearfix">
+                    <div class="col-md-12 col-lg-12">
+                        @Html.Partial("ReportsViewer")
+                        <iframe src="~/ReportViewers/myLedgerSubLedgerReportsViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+
+</div><!-- /.box -->
+
+<script type="text/javascript">
+
+    var currentRptTypeSelection = 'L';
+
+    var ToggleTransactionType = function (rdType) {
+        currentRptTypeSelection = rdType.value;
+        if (rdType.value == "L") {
+            $("#divScheduleFeature").hide();
+        }
+        else if (rdType.value == "S") {
+            $("#divScheduleFeature").show();
+        }
+        else if (rdType.value == "SAS" || rdType.value == "SUAS") {
+            $("#divScheduleFeature").hide();
+        }
+    }
+
+    $(function () {
+        //console.log(currentRptTypeSelection);
+
+
+
+        if (currentRptTypeSelection == "L") {
+            $("#divScheduleFeature").hide();
+        }
+
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true,
+            minimumInputLength: 1
+        });
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+            } else {
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', $("#ZoneInfoList").val().split(','));
+            }
+        });
+
+        $(".date").datepicker();
+
+        d = new Date();
+        date = d.format("dd-MM-yyyy");
+        if ($('#FromDate').val() == '') {
+            $('#FromDate').val(date);
+            $('#ToDate').val(date);
+        }
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+
+        $("#btnSubmit").click(function () {
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            $("#pAccountHead").val($("#COAId :selected").text());
+            $("#pCostCenter").val($("#CostCenterId :selected").text());
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+
+            $("#pZoneName").val(option_ZoneItem);
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+            return fnValidate()
+        });
+
+    });
+</script>

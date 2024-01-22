@@ -1,0 +1,239 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Receipt & Payment";
+}
+
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">Receipt & Payment Information</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "ReceiptPayment", FormMethod.Post, new { @id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.Label("Entity", new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                                <label class="required-field">*</label>
+                                &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                                <br />
+                                @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FromDate, new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control required date" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ToDate, new { @class = "control-label" }) <label class="required-field">*</label>
+                                @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control required date" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.CheckBoxFor(model => model.IsWithOpening)&nbsp;@Html.Label("With Opening")
+                                <br /><br />
+                                @Html.Label("Report Type", new { @class = "control-label" })
+                                <br />
+                                @Html.RadioButtonFor(model => model.ReportType, "S", new { @checked = true })&nbsp;@Html.Label("Individual")
+                                <br />@Html.RadioButtonFor(model => model.ReportType, "C")&nbsp;@Html.Label("Cosolidate")&nbsp;@Html.CheckBoxFor(model => model.HideChildren)&nbsp;@Html.Label("Hide Children?")
+                                <br /><br />
+                                @Html.CheckBoxFor(model => model.WithDetails)&nbsp;@Html.Label("With Budget Variance")
+                                <br />
+                                @Html.RadioButtonFor(model => model.ReceiptsPaymentsReportType, "WAHP", new { @checked = true })&nbsp;@Html.Label("Summary")
+                                <br />@Html.RadioButtonFor(model => model.ReceiptsPaymentsReportType, "WSD")&nbsp;@Html.Label("With Sub-ledger Details")
+                                <br />@Html.RadioButtonFor(model => model.ReceiptsPaymentsReportType, "WSP")&nbsp;@Html.Label("With Sub-ledger Parent Only")
+                                <br />@Html.RadioButtonFor(model => model.ReceiptsPaymentsReportType, "WSCOA")&nbsp;@Html.Label("Summary With CoA Tree")
+
+                                <br />
+
+                                <br />@Html.CheckBoxFor(model => model.IsOpenReportInNewTab)&nbsp;@Html.LabelFor(model => model.IsOpenReportInNewTab)
+                                <br /><button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @*<div class="col-sm-4">
+                        <div class="form-group">
+                            @Html.Label("Level (Applicable for Summary and Consolidate type)", new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.Level, new { @class = "form-control required" })
+                        </div>
+                    </div>*@
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    &nbsp;
+                </div>
+                <div class="" id="divDateRange2">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FromDate2, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.FromDate2, new { @class = "fixed-rpt-date form-control date" })
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ToDate2, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.ToDate2, new { @class = "fixed-rpt-date form-control date" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="box-footer">
+
+            @Html.HiddenFor(m => m.pZoneName)
+            @Html.HiddenFor(m => m.pEntityName)
+            @Html.HiddenFor(m => m.ZoneInfoList)
+
+        </div>
+
+        if (!Model.IsError)
+        {
+            <div class="form-group clearfix">
+                <div class="col-md-12 col-lg-12">
+                    @Html.Partial("AsOnReportsViewer")
+                </div>
+            </div>
+            if (Model.ReportType == "S")
+            { <iframe src="~/ReportViewers/myAsOnReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe> }
+            else
+            { <iframe src="~/ReportViewers/myReceiptPaymentReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>}
+        }
+
+    }
+</div><!-- /.box -->
+
+<script type="text/javascript">
+
+    $(function () {
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true
+        });
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+            } else {
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', $("#ZoneInfoList").val().split(','));
+            }
+        });
+
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList)
+        $(".date").datepicker();
+
+        d = new Date();
+        date = d.format("dd-MM-yyyy");
+        if ($('#FromDate').val() == '') {
+            $('#FromDate').val(date);
+            $('#ToDate').val(date);
+        }
+        function fromDate2(dateStr) {
+            var parts = dateStr.split("-");
+            var date = new Date(parts[2] - 2, parts[1] - 1, parts[0] - 1);
+
+            var year = date.getFullYear();
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            return day + '-' + month + '-' + year;
+        }
+
+        function toDate2(dateStr) {
+            var parts = dateStr.split("-");
+            var date = new Date(parts[2] - 1, parts[1] - 1, parts[0] - 1);
+
+            var year = date.getFullYear();
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            return day + '-' + month + '-' + year;
+        }
+
+        $("#FromDate").on('change', function () {
+            $('#FromDate2').val(fromDate2($('#FromDate').val()));
+            $('#ToDate2').val(toDate2($('#FromDate').val()));
+        });
+
+        $('#divDateRange2').hide();
+        $("#IsAddYear").on('click', function () {
+            if ($(this).is(':checked')) {
+                $('#divDateRange2').show();
+            }
+            else {
+                $('#divDateRange2').hide();
+            }
+        });
+        $("#btnSubmit").click(function () {
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+
+            $("#pZoneName").val(option_ZoneItem);
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+            return fnValidate();
+        });
+
+
+    });
+
+
+</script>

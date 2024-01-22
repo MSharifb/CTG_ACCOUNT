@@ -1,0 +1,16 @@
+﻿
+namespace VistaGL.Transaction {
+
+    @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.responsive()
+    export class AccChequeBookDialog extends Serenity.EntityDialog<AccChequeBookRow, any> {
+        protected getFormKey() { return AccChequeBookForm.formKey; }
+        protected getIdProperty() { return AccChequeBookRow.idProperty; }
+        protected getLocalTextPrefix() { return AccChequeBookRow.localTextPrefix; }
+        protected getNameProperty() { return AccChequeBookRow.nameProperty; }
+        protected getService() { return AccChequeBookService.baseUrl; }
+
+        protected form = new AccChequeBookForm(this.idPrefix);
+
+    }
+}

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSConsolidatedBudget" targetNamespace="http://tempuri.org/DSConsolidatedBudget.xsd" xmlns:mstns="http://tempuri.org/DSConsolidatedBudget.xsd" xmlns="http://tempuri.org/DSConsolidatedBudget.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSConsolidatedBudget" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSConsolidatedBudget" msprop:Generator_UserDSName="DSConsolidatedBudget">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="proc_acc_consolidatedBudget" msprop:Generator_TableClassName="proc_acc_consolidatedBudgetDataTable" msprop:Generator_TableVarName="tableproc_acc_consolidatedBudget" msprop:Generator_TablePropName="proc_acc_consolidatedBudget" msprop:Generator_RowDeletingName="proc_acc_consolidatedBudgetRowDeleting" msprop:Generator_RowChangingName="proc_acc_consolidatedBudgetRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_consolidatedBudgetRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_consolidatedBudgetRowDeleted" msprop:Generator_UserTableName="proc_acc_consolidatedBudget" msprop:Generator_RowChangedName="proc_acc_consolidatedBudgetRowChanged" msprop:Generator_RowEvArgName="proc_acc_consolidatedBudgetRowChangeEvent" msprop:Generator_RowClassName="proc_acc_consolidatedBudgetRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="BudgetForDepartmentId" msprop:Generator_ColumnVarNameInTable="columnBudgetForDepartmentId" msprop:Generator_ColumnPropNameInRow="BudgetForDepartmentId" msprop:Generator_ColumnPropNameInTable="BudgetForDepartmentIdColumn" msprop:Generator_UserColumnName="BudgetForDepartmentId" type="xs:int" />
+              <xs:element name="BudgetYearId" msprop:Generator_ColumnVarNameInTable="columnBudgetYearId" msprop:Generator_ColumnPropNameInRow="BudgetYearId" msprop:Generator_ColumnPropNameInTable="BudgetYearIdColumn" msprop:Generator_UserColumnName="BudgetYearId" type="xs:int" minOccurs="0" />
+              <xs:element name="BudgetYearName" msprop:Generator_ColumnVarNameInTable="columnBudgetYearName" msprop:Generator_ColumnPropNameInRow="BudgetYearName" msprop:Generator_ColumnPropNameInTable="BudgetYearNameColumn" msprop:Generator_UserColumnName="BudgetYearName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BudgetGroupId" msprop:Generator_ColumnVarNameInTable="columnBudgetGroupId" msprop:Generator_ColumnPropNameInRow="BudgetGroupId" msprop:Generator_ColumnPropNameInTable="BudgetGroupIdColumn" msprop:Generator_UserColumnName="BudgetGroupId" type="xs:int" minOccurs="0" />
+              <xs:element name="BudgetHeadId" msprop:Generator_ColumnVarNameInTable="columnBudgetHeadId" msprop:Generator_ColumnPropNameInRow="BudgetHeadId" msprop:Generator_ColumnPropNameInTable="BudgetHeadIdColumn" msprop:Generator_UserColumnName="BudgetHeadId" type="xs:int" minOccurs="0" />
+              <xs:element name="ParentId" msprop:Generator_ColumnVarNameInTable="columnParentId" msprop:Generator_ColumnPropNameInRow="ParentId" msprop:Generator_ColumnPropNameInTable="ParentIdColumn" msprop:Generator_UserColumnName="ParentId" type="xs:int" minOccurs="0" />
+              <xs:element name="IsBudgetHead" msprop:Generator_ColumnVarNameInTable="columnIsBudgetHead" msprop:Generator_ColumnPropNameInRow="IsBudgetHead" msprop:Generator_ColumnPropNameInTable="IsBudgetHeadColumn" msprop:Generator_UserColumnName="IsBudgetHead" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsCoa" msprop:Generator_ColumnVarNameInTable="columnIsCoa" msprop:Generator_ColumnPropNameInRow="IsCoa" msprop:Generator_ColumnPropNameInTable="IsCoaColumn" msprop:Generator_UserColumnName="IsCoa" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsCostCenter" msprop:Generator_ColumnVarNameInTable="columnIsCostCenter" msprop:Generator_ColumnPropNameInRow="IsCostCenter" msprop:Generator_ColumnPropNameInTable="IsCostCenterColumn" msprop:Generator_UserColumnName="IsCostCenter" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BudgetHeadName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBudgetHeadName" msprop:Generator_ColumnPropNameInRow="BudgetHeadName" msprop:Generator_ColumnPropNameInTable="BudgetHeadNameColumn" msprop:Generator_UserColumnName="BudgetHeadName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProposedBudgetFYearId" msprop:Generator_ColumnVarNameInTable="columnProposedBudgetFYearId" msprop:Generator_ColumnPropNameInRow="ProposedBudgetFYearId" msprop:Generator_ColumnPropNameInTable="ProposedBudgetFYearIdColumn" msprop:Generator_UserColumnName="ProposedBudgetFYearId" type="xs:int" minOccurs="0" />
+              <xs:element name="ProposedBudgetFYearName" msprop:Generator_ColumnVarNameInTable="columnProposedBudgetFYearName" msprop:Generator_ColumnPropNameInRow="ProposedBudgetFYearName" msprop:Generator_ColumnPropNameInTable="ProposedBudgetFYearNameColumn" msprop:Generator_UserColumnName="ProposedBudgetFYearName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProposedBudgetAmount" msprop:Generator_ColumnVarNameInTable="columnProposedBudgetAmount" msprop:Generator_ColumnPropNameInRow="ProposedBudgetAmount" msprop:Generator_ColumnPropNameInTable="ProposedBudgetAmountColumn" msprop:Generator_UserColumnName="ProposedBudgetAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RevisedEstimateAmount" msprop:Generator_ColumnVarNameInTable="columnRevisedEstimateAmount" msprop:Generator_ColumnPropNameInRow="RevisedEstimateAmount" msprop:Generator_ColumnPropNameInTable="RevisedEstimateAmountColumn" msprop:Generator_UserColumnName="RevisedEstimateAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ActualFirstSixMonths" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnActualFirstSixMonths" msprop:Generator_ColumnPropNameInRow="ActualFirstSixMonths" msprop:Generator_ColumnPropNameInTable="ActualFirstSixMonthsColumn" msprop:Generator_UserColumnName="ActualFirstSixMonths" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BudgetApproved" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBudgetApproved" msprop:Generator_ColumnPropNameInRow="BudgetApproved" msprop:Generator_ColumnPropNameInTable="BudgetApprovedColumn" msprop:Generator_UserColumnName="BudgetApproved" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ActualDuring" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnActualDuring" msprop:Generator_ColumnPropNameInRow="ActualDuring" msprop:Generator_ColumnPropNameInTable="ActualDuringColumn" msprop:Generator_UserColumnName="ActualDuring" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ActualDuringYear" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnActualDuringYear" msprop:Generator_ColumnPropNameInRow="ActualDuringYear" msprop:Generator_ColumnPropNameInTable="ActualDuringYearColumn" msprop:Generator_UserColumnName="ActualDuringYear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CircularIsActive" msprop:Generator_ColumnVarNameInTable="columnCircularIsActive" msprop:Generator_ColumnPropNameInRow="CircularIsActive" msprop:Generator_ColumnPropNameInTable="CircularIsActiveColumn" msprop:Generator_UserColumnName="CircularIsActive" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BudgetCode" msprop:Generator_ColumnVarNameInTable="columnBudgetCode" msprop:Generator_ColumnPropNameInRow="BudgetCode" msprop:Generator_ColumnPropNameInTable="BudgetCodeColumn" msprop:Generator_UserColumnName="BudgetCode" type="xs:string" minOccurs="0" />
+              <xs:element name="SortingOrder" msprop:Generator_ColumnVarNameInTable="columnSortingOrder" msprop:Generator_ColumnPropNameInRow="SortingOrder" msprop:Generator_ColumnPropNameInTable="SortingOrderColumn" msprop:Generator_UserColumnName="SortingOrder" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Rpt_SP_ACC_ConsolidatedProposedBudget" msprop:Generator_TableClassName="Rpt_SP_ACC_ConsolidatedProposedBudgetDataTable" msprop:Generator_TableVarName="tableRpt_SP_ACC_ConsolidatedProposedBudget" msprop:Generator_TablePropName="Rpt_SP_ACC_ConsolidatedProposedBudget" msprop:Generator_RowDeletingName="Rpt_SP_ACC_ConsolidatedProposedBudgetRowDeleting" msprop:Generator_RowChangingName="Rpt_SP_ACC_ConsolidatedProposedBudgetRowChanging" msprop:Generator_RowEvHandlerName="Rpt_SP_ACC_ConsolidatedProposedBudgetRowChangeEventHandler" msprop:Generator_RowDeletedName="Rpt_SP_ACC_ConsolidatedProposedBudgetRowDeleted" msprop:Generator_UserTableName="Rpt_SP_ACC_ConsolidatedProposedBudget" msprop:Generator_RowChangedName="Rpt_SP_ACC_ConsolidatedProposedBudgetRowChanged" msprop:Generator_RowEvArgName="Rpt_SP_ACC_ConsolidatedProposedBudgetRowChangeEvent" msprop:Generator_RowClassName="Rpt_SP_ACC_ConsolidatedProposedBudgetRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BudgetHeadId" msprop:Generator_ColumnVarNameInTable="columnBudgetHeadId" msprop:Generator_ColumnPropNameInRow="BudgetHeadId" msprop:Generator_ColumnPropNameInTable="BudgetHeadIdColumn" msprop:Generator_UserColumnName="BudgetHeadId" type="xs:int" minOccurs="0" />
+              <xs:element name="ParentId" msprop:Generator_ColumnVarNameInTable="columnParentId" msprop:Generator_ColumnPropNameInRow="ParentId" msprop:Generator_ColumnPropNameInTable="ParentIdColumn" msprop:Generator_UserColumnName="ParentId" type="xs:int" minOccurs="0" />
+              <xs:element name="BudgetHeadName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBudgetHeadName" msprop:Generator_ColumnPropNameInRow="BudgetHeadName" msprop:Generator_ColumnPropNameInTable="BudgetHeadNameColumn" msprop:Generator_UserColumnName="BudgetHeadName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BudgetCode" msprop:Generator_ColumnVarNameInTable="columnBudgetCode" msprop:Generator_ColumnPropNameInRow="BudgetCode" msprop:Generator_ColumnPropNameInTable="BudgetCodeColumn" msprop:Generator_UserColumnName="BudgetCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SortingOrder" msprop:Generator_ColumnVarNameInTable="columnSortingOrder" msprop:Generator_ColumnPropNameInRow="SortingOrder" msprop:Generator_ColumnPropNameInTable="SortingOrderColumn" msprop:Generator_UserColumnName="SortingOrder" type="xs:int" minOccurs="0" />
+              <xs:element name="ProposedBudgetFYearId" msprop:Generator_ColumnVarNameInTable="columnProposedBudgetFYearId" msprop:Generator_ColumnPropNameInRow="ProposedBudgetFYearId" msprop:Generator_ColumnPropNameInTable="ProposedBudgetFYearIdColumn" msprop:Generator_UserColumnName="ProposedBudgetFYearId" type="xs:int" minOccurs="0" />
+              <xs:element name="ProposedBudgetFYearName" msprop:Generator_ColumnVarNameInTable="columnProposedBudgetFYearName" msprop:Generator_ColumnPropNameInRow="ProposedBudgetFYearName" msprop:Generator_ColumnPropNameInTable="ProposedBudgetFYearNameColumn" msprop:Generator_UserColumnName="ProposedBudgetFYearName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProposedBudgetAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnProposedBudgetAmount" msprop:Generator_ColumnPropNameInRow="ProposedBudgetAmount" msprop:Generator_ColumnPropNameInTable="ProposedBudgetAmountColumn" msprop:Generator_UserColumnName="ProposedBudgetAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ZoneCode" msprop:Generator_ColumnVarNameInTable="columnZoneCode" msprop:Generator_ColumnPropNameInRow="ZoneCode" msprop:Generator_ColumnPropNameInTable="ZoneCodeColumn" msprop:Generator_UserColumnName="ZoneCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZoneSortOrder" msprop:Generator_ColumnVarNameInTable="columnZoneSortOrder" msprop:Generator_ColumnPropNameInRow="ZoneSortOrder" msprop:Generator_ColumnPropNameInTable="ZoneSortOrderColumn" msprop:Generator_UserColumnName="ZoneSortOrder" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:proc_acc_consolidatedBudget" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

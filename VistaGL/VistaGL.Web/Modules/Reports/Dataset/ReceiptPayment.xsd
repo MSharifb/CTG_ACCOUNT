@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReceiptPayment" targetNamespace="http://tempuri.org/ReceiptPayment.xsd" xmlns:mstns="http://tempuri.org/ReceiptPayment.xsd" xmlns="http://tempuri.org/ReceiptPayment.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReceiptPayment" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReceiptPayment" msprop:Generator_UserDSName="ReceiptPayment">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="proc_acc_consolidatedPaymentReceive" msprop:Generator_TableClassName="proc_acc_consolidatedPaymentReceiveDataTable" msprop:Generator_TableVarName="tableproc_acc_consolidatedPaymentReceive" msprop:Generator_RowChangedName="proc_acc_consolidatedPaymentReceiveRowChanged" msprop:Generator_TablePropName="proc_acc_consolidatedPaymentReceive" msprop:Generator_RowDeletingName="proc_acc_consolidatedPaymentReceiveRowDeleting" msprop:Generator_RowChangingName="proc_acc_consolidatedPaymentReceiveRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_consolidatedPaymentReceiveRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_consolidatedPaymentReceiveRowDeleted" msprop:Generator_RowClassName="proc_acc_consolidatedPaymentReceiveRow" msprop:Generator_UserTableName="proc_acc_consolidatedPaymentReceive" msprop:Generator_RowEvArgName="proc_acc_consolidatedPaymentReceiveRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="coa_name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncoa_name" msprop:Generator_ColumnPropNameInRow="coa_name" msprop:Generator_ColumnPropNameInTable="coa_nameColumn" msprop:Generator_UserColumnName="coa_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="transactionType" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntransactionType" msprop:Generator_ColumnPropNameInRow="transactionType" msprop:Generator_ColumnPropNameInTable="transactionTypeColumn" msprop:Generator_UserColumnName="transactionType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sumAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsumAmount" msprop:Generator_ColumnPropNameInRow="sumAmount" msprop:Generator_ColumnPropNameInTable="sumAmountColumn" msprop:Generator_UserColumnName="sumAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="tempSerial" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntempSerial" msprop:Generator_ColumnPropNameInRow="tempSerial" msprop:Generator_ColumnPropNameInTable="tempSerialColumn" msprop:Generator_UserColumnName="tempSerial" type="xs:int" minOccurs="0" />
+              <xs:element name="ZoneId" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnZoneId" msprop:Generator_ColumnPropNameInRow="ZoneId" msprop:Generator_ColumnPropNameInTable="ZoneIdColumn" msprop:Generator_UserColumnName="ZoneId" type="xs:int" minOccurs="0" />
+              <xs:element name="ZoneName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="proc_acc_paymentReceive" msprop:Generator_TableClassName="proc_acc_paymentReceiveDataTable" msprop:Generator_TableVarName="tableproc_acc_paymentReceive" msprop:Generator_TablePropName="proc_acc_paymentReceive" msprop:Generator_RowDeletingName="proc_acc_paymentReceiveRowDeleting" msprop:Generator_RowChangingName="proc_acc_paymentReceiveRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_paymentReceiveRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_paymentReceiveRowDeleted" msprop:Generator_UserTableName="proc_acc_paymentReceive" msprop:Generator_RowChangedName="proc_acc_paymentReceiveRowChanged" msprop:Generator_RowEvArgName="proc_acc_paymentReceiveRowChangeEvent" msprop:Generator_RowClassName="proc_acc_paymentReceiveRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="coa_name" msprop:Generator_ColumnVarNameInTable="columncoa_name" msprop:Generator_ColumnPropNameInRow="coa_name" msprop:Generator_ColumnPropNameInTable="coa_nameColumn" msprop:Generator_UserColumnName="coa_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="transactionType" msprop:Generator_ColumnVarNameInTable="columntransactionType" msprop:Generator_ColumnPropNameInRow="transactionType" msprop:Generator_ColumnPropNameInTable="transactionTypeColumn" msprop:Generator_UserColumnName="transactionType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sumAmount" msprop:Generator_ColumnVarNameInTable="columnsumAmount" msprop:Generator_ColumnPropNameInRow="sumAmount" msprop:Generator_ColumnPropNameInTable="sumAmountColumn" msprop:Generator_UserColumnName="sumAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tempSerial" msprop:Generator_ColumnVarNameInTable="columntempSerial" msprop:Generator_ColumnPropNameInRow="tempSerial" msprop:Generator_ColumnPropNameInTable="tempSerialColumn" msprop:Generator_UserColumnName="tempSerial" type="xs:int" minOccurs="0" />
+              <xs:element name="sumAmount2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsumAmount2" msprop:Generator_ColumnPropNameInRow="sumAmount2" msprop:Generator_ColumnPropNameInTable="sumAmount2Column" msprop:Generator_UserColumnName="sumAmount2" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="proc_acc_DetailsPaymentReceive" msprop:Generator_TableClassName="proc_acc_DetailsPaymentReceiveDataTable" msprop:Generator_TableVarName="tableproc_acc_DetailsPaymentReceive" msprop:Generator_TablePropName="proc_acc_DetailsPaymentReceive" msprop:Generator_RowDeletingName="proc_acc_DetailsPaymentReceiveRowDeleting" msprop:Generator_RowChangingName="proc_acc_DetailsPaymentReceiveRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_DetailsPaymentReceiveRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_DetailsPaymentReceiveRowDeleted" msprop:Generator_UserTableName="proc_acc_DetailsPaymentReceive" msprop:Generator_RowChangedName="proc_acc_DetailsPaymentReceiveRowChanged" msprop:Generator_RowEvArgName="proc_acc_DetailsPaymentReceiveRowChangeEvent" msprop:Generator_RowClassName="proc_acc_DetailsPaymentReceiveRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ledger_COAparent" msprop:Generator_ColumnVarNameInTable="columnledger_COAparent" msprop:Generator_ColumnPropNameInRow="ledger_COAparent" msprop:Generator_ColumnPropNameInTable="ledger_COAparentColumn" msprop:Generator_UserColumnName="ledger_COAparent" type="xs:string" minOccurs="0" />
+              <xs:element name="ledger_coaid" msprop:Generator_ColumnVarNameInTable="columnledger_coaid" msprop:Generator_ColumnPropNameInRow="ledger_coaid" msprop:Generator_ColumnPropNameInTable="ledger_coaidColumn" msprop:Generator_UserColumnName="ledger_coaid" type="xs:int" minOccurs="0" />
+              <xs:element name="ledger_coaname" msprop:Generator_ColumnVarNameInTable="columnledger_coaname" msprop:Generator_ColumnPropNameInRow="ledger_coaname" msprop:Generator_ColumnPropNameInTable="ledger_coanameColumn" msprop:Generator_UserColumnName="ledger_coaname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ledger_account_Group" msprop:Generator_ColumnVarNameInTable="columnledger_account_Group" msprop:Generator_ColumnPropNameInRow="ledger_account_Group" msprop:Generator_ColumnPropNameInTable="ledger_account_GroupColumn" msprop:Generator_UserColumnName="ledger_account_Group" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="opening_balance" msprop:Generator_ColumnVarNameInTable="columnopening_balance" msprop:Generator_ColumnPropNameInRow="opening_balance" msprop:Generator_ColumnPropNameInTable="opening_balanceColumn" msprop:Generator_UserColumnName="opening_balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="coa_openingBalance" msprop:Generator_ColumnVarNameInTable="columncoa_openingBalance" msprop:Generator_ColumnPropNameInRow="coa_openingBalance" msprop:Generator_ColumnPropNameInTable="coa_openingBalanceColumn" msprop:Generator_UserColumnName="coa_openingBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="budget_Amount" msprop:Generator_ColumnVarNameInTable="columnbudget_Amount" msprop:Generator_ColumnPropNameInRow="budget_Amount" msprop:Generator_ColumnPropNameInTable="budget_AmountColumn" msprop:Generator_UserColumnName="budget_Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="amount_InDateRange" msprop:Generator_ColumnVarNameInTable="columnamount_InDateRange" msprop:Generator_ColumnPropNameInRow="amount_InDateRange" msprop:Generator_ColumnPropNameInTable="amount_InDateRangeColumn" msprop:Generator_UserColumnName="amount_InDateRange" type="xs:decimal" minOccurs="0" />
+              <xs:element name="closing_balance" msprop:Generator_ColumnVarNameInTable="columnclosing_balance" msprop:Generator_ColumnPropNameInRow="closing_balance" msprop:Generator_ColumnPropNameInTable="closing_balanceColumn" msprop:Generator_UserColumnName="closing_balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="bank_CurrentOpening" msprop:Generator_ColumnVarNameInTable="columnbank_CurrentOpening" msprop:Generator_ColumnPropNameInRow="bank_CurrentOpening" msprop:Generator_ColumnPropNameInTable="bank_CurrentOpeningColumn" msprop:Generator_UserColumnName="bank_CurrentOpening" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tmpSerial" msdata:Caption="payOrReceive" msprop:Generator_ColumnVarNameInTable="columntmpSerial" msprop:Generator_ColumnPropNameInRow="tmpSerial" msprop:Generator_ColumnPropNameInTable="tmpSerialColumn" msprop:Generator_UserColumnName="tmpSerial" type="xs:int" minOccurs="0" />
+              <xs:element name="transactionType" msprop:Generator_ColumnVarNameInTable="columntransactionType" msprop:Generator_ColumnPropNameInRow="transactionType" msprop:Generator_ColumnPropNameInTable="transactionTypeColumn" msprop:Generator_UserColumnName="transactionType" type="xs:string" minOccurs="0" />
+              <xs:element name="coa_UserCode" msprop:Generator_ColumnVarNameInTable="columncoa_UserCode" msprop:Generator_ColumnPropNameInRow="coa_UserCode" msprop:Generator_ColumnPropNameInTable="coa_UserCodeColumn" msprop:Generator_UserColumnName="coa_UserCode" type="xs:string" minOccurs="0" />
+              <xs:element name="coa_mapping" msprop:Generator_ColumnVarNameInTable="columncoa_mapping" msprop:Generator_ColumnPropNameInRow="coa_mapping" msprop:Generator_ColumnPropNameInTable="coa_mappingColumn" msprop:Generator_UserColumnName="coa_mapping" type="xs:string" minOccurs="0" />
+              <xs:element name="subLedger_Parent_Code" msprop:Generator_ColumnVarNameInTable="columnsubLedger_Parent_Code" msprop:Generator_ColumnPropNameInRow="subLedger_Parent_Code" msprop:Generator_ColumnPropNameInTable="subLedger_Parent_CodeColumn" msprop:Generator_UserColumnName="subLedger_Parent_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="subLedger_Parent" msprop:Generator_ColumnVarNameInTable="columnsubLedger_Parent" msprop:Generator_ColumnPropNameInRow="subLedger_Parent" msprop:Generator_ColumnPropNameInTable="subLedger_ParentColumn" msprop:Generator_UserColumnName="subLedger_Parent" type="xs:string" minOccurs="0" />
+              <xs:element name="subLedger_id" msprop:Generator_ColumnVarNameInTable="columnsubLedger_id" msprop:Generator_ColumnPropNameInRow="subLedger_id" msprop:Generator_ColumnPropNameInTable="subLedger_idColumn" msprop:Generator_UserColumnName="subLedger_id" type="xs:int" minOccurs="0" />
+              <xs:element name="subLedger_code" msprop:Generator_ColumnVarNameInTable="columnsubLedger_code" msprop:Generator_ColumnPropNameInRow="subLedger_code" msprop:Generator_ColumnPropNameInTable="subLedger_codeColumn" msprop:Generator_UserColumnName="subLedger_code" type="xs:string" minOccurs="0" />
+              <xs:element name="subLedger" msprop:Generator_ColumnVarNameInTable="columnsubLedger" msprop:Generator_ColumnPropNameInRow="subLedger" msprop:Generator_ColumnPropNameInTable="subLedgerColumn" msprop:Generator_UserColumnName="subLedger" type="xs:string" minOccurs="0" />
+              <xs:element name="SortOrder" msprop:Generator_ColumnVarNameInTable="columnSortOrder" msprop:Generator_ColumnPropNameInRow="SortOrder" msprop:Generator_ColumnPropNameInTable="SortOrderColumn" msprop:Generator_UserColumnName="SortOrder" type="xs:int" minOccurs="0" />
+              <xs:element name="ShowSumInReceiptPaymentReport" msprop:Generator_ColumnVarNameInTable="columnShowSumInReceiptPaymentReport" msprop:Generator_ColumnPropNameInRow="ShowSumInReceiptPaymentReport" msprop:Generator_ColumnPropNameInTable="ShowSumInReceiptPaymentReportColumn" msprop:Generator_UserColumnName="ShowSumInReceiptPaymentReport" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="total_Ob_Bank" msprop:Generator_ColumnVarNameInTable="columntotal_Ob_Bank" msprop:Generator_ColumnPropNameInRow="total_Ob_Bank" msprop:Generator_ColumnPropNameInTable="total_Ob_BankColumn" msprop:Generator_UserColumnName="total_Ob_Bank" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Payment_OpeningBalance" msprop:Generator_ColumnVarNameInTable="columntotal_Payment_OpeningBalance" msprop:Generator_ColumnPropNameInRow="total_Payment_OpeningBalance" msprop:Generator_ColumnPropNameInTable="total_Payment_OpeningBalanceColumn" msprop:Generator_UserColumnName="total_Payment_OpeningBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Payment_InDateRange" msprop:Generator_ColumnVarNameInTable="columntotal_Payment_InDateRange" msprop:Generator_ColumnPropNameInRow="total_Payment_InDateRange" msprop:Generator_ColumnPropNameInTable="total_Payment_InDateRangeColumn" msprop:Generator_UserColumnName="total_Payment_InDateRange" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Receipt_OB" msprop:Generator_ColumnVarNameInTable="columntotal_Receipt_OB" msprop:Generator_ColumnPropNameInRow="total_Receipt_OB" msprop:Generator_ColumnPropNameInTable="total_Receipt_OBColumn" msprop:Generator_UserColumnName="total_Receipt_OB" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Receipt" msprop:Generator_ColumnVarNameInTable="columntotal_Receipt" msprop:Generator_ColumnPropNameInRow="total_Receipt" msprop:Generator_ColumnPropNameInTable="total_ReceiptColumn" msprop:Generator_UserColumnName="total_Receipt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Payment" msprop:Generator_ColumnVarNameInTable="columntotal_Payment" msprop:Generator_ColumnPropNameInRow="total_Payment" msprop:Generator_ColumnPropNameInTable="total_PaymentColumn" msprop:Generator_UserColumnName="total_Payment" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ZoneName" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneCode" msprop:Generator_ColumnVarNameInTable="columnZoneCode" msprop:Generator_ColumnPropNameInRow="ZoneCode" msprop:Generator_ColumnPropNameInTable="ZoneCodeColumn" msprop:Generator_UserColumnName="ZoneCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneSortOrder" msprop:Generator_ColumnVarNameInTable="columnZoneSortOrder" msprop:Generator_ColumnPropNameInRow="ZoneSortOrder" msprop:Generator_ColumnPropNameInTable="ZoneSortOrderColumn" msprop:Generator_UserColumnName="ZoneSortOrder" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="proc_acc_ReceiptPayment_BudgetHead" msprop:Generator_TableClassName="proc_acc_ReceiptPayment_BudgetHeadDataTable" msprop:Generator_TableVarName="tableproc_acc_ReceiptPayment_BudgetHead" msprop:Generator_RowChangedName="proc_acc_ReceiptPayment_BudgetHeadRowChanged" msprop:Generator_TablePropName="proc_acc_ReceiptPayment_BudgetHead" msprop:Generator_RowDeletingName="proc_acc_ReceiptPayment_BudgetHeadRowDeleting" msprop:Generator_RowChangingName="proc_acc_ReceiptPayment_BudgetHeadRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_ReceiptPayment_BudgetHeadRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_ReceiptPayment_BudgetHeadRowDeleted" msprop:Generator_RowClassName="proc_acc_ReceiptPayment_BudgetHeadRow" msprop:Generator_UserTableName="proc_acc_ReceiptPayment_BudgetHead" msprop:Generator_RowEvArgName="proc_acc_ReceiptPayment_BudgetHeadRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="transactionType" msprop:Generator_ColumnVarNameInTable="columntransactionType" msprop:Generator_ColumnPropNameInRow="transactionType" msprop:Generator_ColumnPropNameInTable="transactionTypeColumn" msprop:Generator_UserColumnName="transactionType" type="xs:string" minOccurs="0" />
+              <xs:element name="TTSortOrder" msprop:Generator_ColumnVarNameInTable="columnTTSortOrder" msprop:Generator_ColumnPropNameInRow="TTSortOrder" msprop:Generator_ColumnPropNameInTable="TTSortOrderColumn" msprop:Generator_UserColumnName="TTSortOrder" type="xs:string" minOccurs="0" />
+              <xs:element name="ParentHeadName" msprop:Generator_ColumnVarNameInTable="columnParentHeadName" msprop:Generator_ColumnPropNameInRow="ParentHeadName" msprop:Generator_ColumnPropNameInTable="ParentHeadNameColumn" msprop:Generator_UserColumnName="ParentHeadName" type="xs:string" minOccurs="0" />
+              <xs:element name="HeadName" msprop:Generator_ColumnVarNameInTable="columnHeadName" msprop:Generator_ColumnPropNameInRow="HeadName" msprop:Generator_ColumnPropNameInTable="HeadNameColumn" msprop:Generator_UserColumnName="HeadName" type="xs:string" minOccurs="0" />
+              <xs:element name="coa_openingBalance" msprop:Generator_ColumnVarNameInTable="columncoa_openingBalance" msprop:Generator_ColumnPropNameInRow="coa_openingBalance" msprop:Generator_ColumnPropNameInTable="coa_openingBalanceColumn" msprop:Generator_UserColumnName="coa_openingBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="budget_Amount" msprop:Generator_ColumnVarNameInTable="columnbudget_Amount" msprop:Generator_ColumnPropNameInRow="budget_Amount" msprop:Generator_ColumnPropNameInTable="budget_AmountColumn" msprop:Generator_UserColumnName="budget_Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="opening_balance" msprop:Generator_ColumnVarNameInTable="columnopening_balance" msprop:Generator_ColumnPropNameInRow="opening_balance" msprop:Generator_ColumnPropNameInTable="opening_balanceColumn" msprop:Generator_UserColumnName="opening_balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="amount_InDateRange" msprop:Generator_ColumnVarNameInTable="columnamount_InDateRange" msprop:Generator_ColumnPropNameInRow="amount_InDateRange" msprop:Generator_ColumnPropNameInTable="amount_InDateRangeColumn" msprop:Generator_UserColumnName="amount_InDateRange" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Ob_Bank" msprop:Generator_ColumnVarNameInTable="columntotal_Ob_Bank" msprop:Generator_ColumnPropNameInRow="total_Ob_Bank" msprop:Generator_ColumnPropNameInTable="total_Ob_BankColumn" msprop:Generator_UserColumnName="total_Ob_Bank" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BGSortOrder" msprop:Generator_ColumnVarNameInTable="columnBGSortOrder" msprop:Generator_ColumnPropNameInRow="BGSortOrder" msprop:Generator_ColumnPropNameInTable="BGSortOrderColumn" msprop:Generator_UserColumnName="BGSortOrder" type="xs:int" minOccurs="0" />
+              <xs:element name="ParentHeadId" msprop:Generator_ColumnVarNameInTable="columnParentHeadId" msprop:Generator_ColumnPropNameInRow="ParentHeadId" msprop:Generator_ColumnPropNameInTable="ParentHeadIdColumn" msprop:Generator_UserColumnName="ParentHeadId" type="xs:int" minOccurs="0" />
+              <xs:element name="ZoneName" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneCode" msdata:Caption="zoneCode" msprop:Generator_ColumnVarNameInTable="columnZoneCode" msprop:Generator_ColumnPropNameInRow="ZoneCode" msprop:Generator_ColumnPropNameInTable="ZoneCodeColumn" msprop:Generator_UserColumnName="ZoneCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneSortOrder" msprop:Generator_ColumnVarNameInTable="columnZoneSortOrder" msprop:Generator_ColumnPropNameInRow="ZoneSortOrder" msprop:Generator_ColumnPropNameInTable="ZoneSortOrderColumn" msprop:Generator_UserColumnName="ZoneSortOrder" type="xs:string" minOccurs="0" />
+              <xs:element name="HeadId" msprop:Generator_ColumnVarNameInTable="columnHeadId" msprop:Generator_ColumnPropNameInRow="HeadId" msprop:Generator_ColumnPropNameInTable="HeadIdColumn" msprop:Generator_UserColumnName="HeadId" type="xs:int" minOccurs="0" />
+              <xs:element name="total_Receipt" msprop:Generator_ColumnVarNameInTable="columntotal_Receipt" msprop:Generator_ColumnPropNameInRow="total_Receipt" msprop:Generator_ColumnPropNameInTable="total_ReceiptColumn" msprop:Generator_UserColumnName="total_Receipt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Payment" msprop:Generator_ColumnVarNameInTable="columntotal_Payment" msprop:Generator_ColumnPropNameInRow="total_Payment" msprop:Generator_ColumnPropNameInTable="total_PaymentColumn" msprop:Generator_UserColumnName="total_Payment" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="proc_acc_ReceiptPayment_BudgetHead_Opening" msprop:Generator_TableClassName="proc_acc_ReceiptPayment_BudgetHead_OpeningDataTable" msprop:Generator_TableVarName="tableproc_acc_ReceiptPayment_BudgetHead_Opening" msprop:Generator_RowChangedName="proc_acc_ReceiptPayment_BudgetHead_OpeningRowChanged" msprop:Generator_TablePropName="proc_acc_ReceiptPayment_BudgetHead_Opening" msprop:Generator_RowDeletingName="proc_acc_ReceiptPayment_BudgetHead_OpeningRowDeleting" msprop:Generator_RowChangingName="proc_acc_ReceiptPayment_BudgetHead_OpeningRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_ReceiptPayment_BudgetHead_OpeningRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_ReceiptPayment_BudgetHead_OpeningRowDeleted" msprop:Generator_RowClassName="proc_acc_ReceiptPayment_BudgetHead_OpeningRow" msprop:Generator_UserTableName="proc_acc_ReceiptPayment_BudgetHead_Opening" msprop:Generator_RowEvArgName="proc_acc_ReceiptPayment_BudgetHead_OpeningRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="transactionType" msprop:Generator_ColumnVarNameInTable="columntransactionType" msprop:Generator_ColumnPropNameInRow="transactionType" msprop:Generator_ColumnPropNameInTable="transactionTypeColumn" msprop:Generator_UserColumnName="transactionType" type="xs:string" minOccurs="0" />
+              <xs:element name="TTSortOrder" msprop:Generator_ColumnVarNameInTable="columnTTSortOrder" msprop:Generator_ColumnPropNameInRow="TTSortOrder" msprop:Generator_ColumnPropNameInTable="TTSortOrderColumn" msprop:Generator_UserColumnName="TTSortOrder" type="xs:string" minOccurs="0" />
+              <xs:element name="ParentHeadName" msprop:Generator_ColumnVarNameInTable="columnParentHeadName" msprop:Generator_ColumnPropNameInRow="ParentHeadName" msprop:Generator_ColumnPropNameInTable="ParentHeadNameColumn" msprop:Generator_UserColumnName="ParentHeadName" type="xs:string" minOccurs="0" />
+              <xs:element name="HeadName" msprop:Generator_ColumnVarNameInTable="columnHeadName" msprop:Generator_ColumnPropNameInRow="HeadName" msprop:Generator_ColumnPropNameInTable="HeadNameColumn" msprop:Generator_UserColumnName="HeadName" type="xs:string" minOccurs="0" />
+              <xs:element name="coa_openingBalance" msprop:Generator_ColumnVarNameInTable="columncoa_openingBalance" msprop:Generator_ColumnPropNameInRow="coa_openingBalance" msprop:Generator_ColumnPropNameInTable="coa_openingBalanceColumn" msprop:Generator_UserColumnName="coa_openingBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="budget_Amount" msprop:Generator_ColumnVarNameInTable="columnbudget_Amount" msprop:Generator_ColumnPropNameInRow="budget_Amount" msprop:Generator_ColumnPropNameInTable="budget_AmountColumn" msprop:Generator_UserColumnName="budget_Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="opening_balance" msprop:Generator_ColumnVarNameInTable="columnopening_balance" msprop:Generator_ColumnPropNameInRow="opening_balance" msprop:Generator_ColumnPropNameInTable="opening_balanceColumn" msprop:Generator_UserColumnName="opening_balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="amount_InDateRange" msprop:Generator_ColumnVarNameInTable="columnamount_InDateRange" msprop:Generator_ColumnPropNameInRow="amount_InDateRange" msprop:Generator_ColumnPropNameInTable="amount_InDateRangeColumn" msprop:Generator_UserColumnName="amount_InDateRange" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Ob_Bank" msprop:Generator_ColumnVarNameInTable="columntotal_Ob_Bank" msprop:Generator_ColumnPropNameInRow="total_Ob_Bank" msprop:Generator_ColumnPropNameInTable="total_Ob_BankColumn" msprop:Generator_UserColumnName="total_Ob_Bank" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BGSortOrder" msprop:Generator_ColumnVarNameInTable="columnBGSortOrder" msprop:Generator_ColumnPropNameInRow="BGSortOrder" msprop:Generator_ColumnPropNameInTable="BGSortOrderColumn" msprop:Generator_UserColumnName="BGSortOrder" type="xs:int" minOccurs="0" />
+              <xs:element name="ParentHeadId" msprop:Generator_ColumnVarNameInTable="columnParentHeadId" msprop:Generator_ColumnPropNameInRow="ParentHeadId" msprop:Generator_ColumnPropNameInTable="ParentHeadIdColumn" msprop:Generator_UserColumnName="ParentHeadId" type="xs:int" minOccurs="0" />
+              <xs:element name="ZoneName" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneCode" msdata:Caption="zoneCode" msprop:Generator_ColumnVarNameInTable="columnZoneCode" msprop:Generator_ColumnPropNameInRow="ZoneCode" msprop:Generator_ColumnPropNameInTable="ZoneCodeColumn" msprop:Generator_UserColumnName="ZoneCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneSortOrder" msprop:Generator_ColumnVarNameInTable="columnZoneSortOrder" msprop:Generator_ColumnPropNameInRow="ZoneSortOrder" msprop:Generator_ColumnPropNameInTable="ZoneSortOrderColumn" msprop:Generator_UserColumnName="ZoneSortOrder" type="xs:string" minOccurs="0" />
+              <xs:element name="HeadId" msprop:Generator_ColumnVarNameInTable="columnHeadId" msprop:Generator_ColumnPropNameInRow="HeadId" msprop:Generator_ColumnPropNameInTable="HeadIdColumn" msprop:Generator_UserColumnName="HeadId" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="proc_acc_ReceiptPayment_BudgetHead_Closing" msprop:Generator_TableClassName="proc_acc_ReceiptPayment_BudgetHead_ClosingDataTable" msprop:Generator_TableVarName="tableproc_acc_ReceiptPayment_BudgetHead_Closing" msprop:Generator_RowChangedName="proc_acc_ReceiptPayment_BudgetHead_ClosingRowChanged" msprop:Generator_TablePropName="proc_acc_ReceiptPayment_BudgetHead_Closing" msprop:Generator_RowDeletingName="proc_acc_ReceiptPayment_BudgetHead_ClosingRowDeleting" msprop:Generator_RowChangingName="proc_acc_ReceiptPayment_BudgetHead_ClosingRowChanging" msprop:Generator_RowEvHandlerName="proc_acc_ReceiptPayment_BudgetHead_ClosingRowChangeEventHandler" msprop:Generator_RowDeletedName="proc_acc_ReceiptPayment_BudgetHead_ClosingRowDeleted" msprop:Generator_RowClassName="proc_acc_ReceiptPayment_BudgetHead_ClosingRow" msprop:Generator_UserTableName="proc_acc_ReceiptPayment_BudgetHead_Closing" msprop:Generator_RowEvArgName="proc_acc_ReceiptPayment_BudgetHead_ClosingRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="transactionType" msprop:Generator_ColumnVarNameInTable="columntransactionType" msprop:Generator_ColumnPropNameInRow="transactionType" msprop:Generator_ColumnPropNameInTable="transactionTypeColumn" msprop:Generator_UserColumnName="transactionType" type="xs:string" minOccurs="0" />
+              <xs:element name="TTSortOrder" msprop:Generator_ColumnVarNameInTable="columnTTSortOrder" msprop:Generator_ColumnPropNameInRow="TTSortOrder" msprop:Generator_ColumnPropNameInTable="TTSortOrderColumn" msprop:Generator_UserColumnName="TTSortOrder" type="xs:string" minOccurs="0" />
+              <xs:element name="ParentHeadName" msprop:Generator_ColumnVarNameInTable="columnParentHeadName" msprop:Generator_ColumnPropNameInRow="ParentHeadName" msprop:Generator_ColumnPropNameInTable="ParentHeadNameColumn" msprop:Generator_UserColumnName="ParentHeadName" type="xs:string" minOccurs="0" />
+              <xs:element name="HeadName" msprop:Generator_ColumnVarNameInTable="columnHeadName" msprop:Generator_ColumnPropNameInRow="HeadName" msprop:Generator_ColumnPropNameInTable="HeadNameColumn" msprop:Generator_UserColumnName="HeadName" type="xs:string" minOccurs="0" />
+              <xs:element name="coa_openingBalance" msprop:Generator_ColumnVarNameInTable="columncoa_openingBalance" msprop:Generator_ColumnPropNameInRow="coa_openingBalance" msprop:Generator_ColumnPropNameInTable="coa_openingBalanceColumn" msprop:Generator_UserColumnName="coa_openingBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="budget_Amount" msprop:Generator_ColumnVarNameInTable="columnbudget_Amount" msprop:Generator_ColumnPropNameInRow="budget_Amount" msprop:Generator_ColumnPropNameInTable="budget_AmountColumn" msprop:Generator_UserColumnName="budget_Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="opening_balance" msprop:Generator_ColumnVarNameInTable="columnopening_balance" msprop:Generator_ColumnPropNameInRow="opening_balance" msprop:Generator_ColumnPropNameInTable="opening_balanceColumn" msprop:Generator_UserColumnName="opening_balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="amount_InDateRange" msprop:Generator_ColumnVarNameInTable="columnamount_InDateRange" msprop:Generator_ColumnPropNameInRow="amount_InDateRange" msprop:Generator_ColumnPropNameInTable="amount_InDateRangeColumn" msprop:Generator_UserColumnName="amount_InDateRange" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_Ob_Bank" msprop:Generator_ColumnVarNameInTable="columntotal_Ob_Bank" msprop:Generator_ColumnPropNameInRow="total_Ob_Bank" msprop:Generator_ColumnPropNameInTable="total_Ob_BankColumn" msprop:Generator_UserColumnName="total_Ob_Bank" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BGSortOrder" msprop:Generator_ColumnVarNameInTable="columnBGSortOrder" msprop:Generator_ColumnPropNameInRow="BGSortOrder" msprop:Generator_ColumnPropNameInTable="BGSortOrderColumn" msprop:Generator_UserColumnName="BGSortOrder" type="xs:int" minOccurs="0" />
+              <xs:element name="ParentHeadId" msprop:Generator_ColumnVarNameInTable="columnParentHeadId" msprop:Generator_ColumnPropNameInRow="ParentHeadId" msprop:Generator_ColumnPropNameInTable="ParentHeadIdColumn" msprop:Generator_UserColumnName="ParentHeadId" type="xs:int" minOccurs="0" />
+              <xs:element name="HeadId" msprop:Generator_ColumnVarNameInTable="columnHeadId" msprop:Generator_ColumnPropNameInRow="HeadId" msprop:Generator_ColumnPropNameInTable="HeadIdColumn" msprop:Generator_UserColumnName="HeadId" type="xs:int" minOccurs="0" />
+              <xs:element name="ZoneName" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneCode" msprop:Generator_ColumnVarNameInTable="columnZoneCode" msprop:Generator_ColumnPropNameInRow="ZoneCode" msprop:Generator_ColumnPropNameInTable="ZoneCodeColumn" msprop:Generator_UserColumnName="ZoneCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ZoneSortOrder" msprop:Generator_ColumnVarNameInTable="columnZoneSortOrder" msprop:Generator_ColumnPropNameInRow="ZoneSortOrder" msprop:Generator_ColumnPropNameInTable="ZoneSortOrderColumn" msprop:Generator_UserColumnName="ZoneSortOrder" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

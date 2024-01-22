@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Transaction.BudgetCreationApproval.EntityPlural");
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new VistaGL.Transaction.BudgetCreationApprovalGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>
+
+@*@{
+        ViewData["Title"] = Serenity.LocalText.Get("Db.Transaction.BudgetCreationApproval.EntityPlural");
+}
+<!-- Custom Tabs -->
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_1" data-toggle="tab">Budget Approval</a></li>
+        <li class=""><a href="#tab_2" data-toggle="tab">Budget Approval History</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+            <div id="GridDiv"></div>
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane " id="tab_2">
+            <div id="HistoryDiv"></div>
+        </div>
+        <!-- /.tab-pane -->
+        <!-- /.tab-pane -->
+    </div>
+    <!-- /.tab-content -->
+</div>
+<!-- nav-tabs-custom -->
+
+<script type="text/javascript">
+    jQuery(function () {
+
+
+        //Approve
+        var directBR = new VistaGL.Transaction.BudgetCreationApprovalGrid($('#GridDiv'), {}).init();
+        Q.initFullHeightGridPage($('#GridDiv'));
+
+        //History
+        var BR = new VistaGL.Transaction.AccBudgetApprovalHistoryGrid($('#HistoryDiv'), {}).init();
+        Q.initFullHeightGridPage($('#HistoryDiv'));
+
+        directBR.AccBudgetApprovalHistoryGrid = BR;
+
+        $("#tab_2").append($("#HistoryDiv"));
+        //BR.refresh();
+        //bs tab change event
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = $(e.target).attr("href") // activated tab
+            if (target == '#tab_1') {
+                directBR.refresh();
+            } else {
+
+                BR.refresh();
+                Q.initFullHeightGridPage($('#HistoryDiv'));
+            }
+        });
+    });
+</script>*@

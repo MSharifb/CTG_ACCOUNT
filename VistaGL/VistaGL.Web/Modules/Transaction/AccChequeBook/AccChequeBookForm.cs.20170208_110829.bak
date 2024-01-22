@@ -1,0 +1,57 @@
+﻿
+namespace VistaGL.Transaction.Forms
+{
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using System;
+    using System.ComponentModel;
+    using System.Collections.Generic;
+    using System.IO;
+
+    [FormScript("Transaction.AccChequeBook")]
+    [BasedOnRow(typeof(Entities.AccChequeBookRow))]
+    public class AccChequeBookForm
+    {
+       
+        [CssClass("width6"),DisplayName("Account No.")]
+        public Int32 BankAccountInformationId { get; set; }
+
+        [CssClass("width6"), DisplayName("Cheque Book No.")]
+        public String CheckBookName { get; set; }
+
+        [CssClass("width6"), OneWay, ReadOnly(true)]
+        public String BankName { get; set; }
+
+        [CssClass("width6"), DisplayName("C.B. Collection Date")]
+        public DateTime ChequeIssueDate { get; set; }
+
+        [CssClass("width6"), OneWay, ReadOnly(true)]
+        public String BranchName { get; set; }
+
+        [CssClass("width6"), DisplayName("Starting No.")]
+        public Decimal StartingNo { get; set; }
+
+        [CssClass("width6"), OneWay, ReadOnly(true)]
+        public String AccountName { get; set; }
+        [CssClass("width6")]
+        public Decimal PageNo { get; set; }        
+
+        [CssClass("width6")]
+        public Int32 EntityId { get; set; }
+
+        [CssClass("width6"), ReadOnly(true), DisplayName("Ending No.")]
+        public Decimal EndingNo { get; set; }
+
+        [CssClass("width6")]
+        public String Prefix { get; set; }
+
+        
+
+       
+       
+
+        //public Boolean HasFinished { get; set; }
+
+    }
+}

@@ -1,0 +1,29 @@
+﻿
+namespace VistaGL.Transaction.Columns
+{
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using System;
+    using System.ComponentModel;
+    using System.Collections.Generic;
+    using System.IO;
+
+    [ColumnsScript("Transaction.AccChequeBook")]
+    [BasedOnRow(typeof(Entities.AccChequeBookRow))]
+    public class AccChequeBookColumns
+    {
+        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        public Int32 Id { get; set; }
+        public DateTime ChequeIssueDate { get; set; }
+        [EditLink]
+        public String CheckBookName { get; set; }
+        public Decimal EndingNo { get; set; }
+        public Int16 HasFinished { get; set; }
+        public Decimal StartingNo { get; set; }
+        public Int32 EntityId { get; set; }
+        public Int32 BankAccountInformationId { get; set; }
+        public Decimal PageNo { get; set; }
+        public String Prefix { get; set; }
+    }
+}

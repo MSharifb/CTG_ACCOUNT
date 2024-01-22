@@ -1,0 +1,31 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "emitBOM": true,
+    "noEmitHelpers": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "outFile": "Scripts/site/VistaGL.Web.js",
+    "target": "es5"
+    //"typeRoots": [
+    //  "./node_modules/@types/"
+    //]
+  },
+  "exclude": [
+    "./node_modules/",
+    "./Scripts/",
+    "./tools/",
+    "./bin/",
+    "./bin2/",
+    "./obj/",
+    "./Content/",
+    "./App_Data/"
+  ],
+  "include": [
+    "./Imports/",
+    "./Modules/"
+  ]
+}

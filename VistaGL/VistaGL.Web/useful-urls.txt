@@ -1,0 +1,6 @@
+﻿
+
+http://json2csharp.com/
+
+--//-- JSON Validator --//--
+https://jsonlint.com/

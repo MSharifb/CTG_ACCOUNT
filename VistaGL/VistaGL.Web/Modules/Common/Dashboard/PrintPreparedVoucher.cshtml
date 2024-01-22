@@ -1,0 +1,46 @@
+﻿@model VistaGL.Modules.Common.Dashboard.DashboardPrintModel
+
+@{
+//Layout = null;
+    ViewData["Title"] = @Model.Title;
+}
+
+
+<div style="border-bottom: 1px solid blueviolet;">
+    @Model.Title
+</div>
+<br />
+
+@{
+    int slNo = 0;
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered" style="font-size: 8pt;">
+        <thead class="thead-dark">
+        <tr>
+            <th style="width: 40px;">#</th>
+            <th style="width: 100px;">Voucher Type</th>
+            <th style="width: 100px;">Voucher No</th>
+            <th style="width: 60px;">Cheque No</th>
+            <th align="right" style="width: 50px;">Amount</th>
+            <th style="width: 100px;">Voucher Date</th>
+            <th style="width: 100px;">Pay to or Receive From</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Detail)
+        {
+            <tr>
+                <td>@(++slNo)</td>
+                <td align="center">@item.VoucherType</td>
+                <td align="center">@item.VoucherNo</td>
+                <td>@item.ChequeNo</td>
+                <td align="right">@item.Amount</td>
+                <td>@item.VoucherDate</td>
+                <td>@item.PaytoOrReciveFrom</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

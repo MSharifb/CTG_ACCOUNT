@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSChequeIssueInfo" targetNamespace="http://tempuri.org/DSChequeIssueInfo.xsd" xmlns:mstns="http://tempuri.org/DSChequeIssueInfo.xsd" xmlns="http://tempuri.org/DSChequeIssueInfo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSChequeIssueInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSChequeIssueInfo" msprop:Generator_UserDSName="DSChequeIssueInfo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Rpt_SP_ACC_ChequeIssueProcess" msprop:Generator_TableClassName="Rpt_SP_ACC_ChequeIssueProcessDataTable" msprop:Generator_TableVarName="tableRpt_SP_ACC_ChequeIssueProcess" msprop:Generator_RowChangedName="Rpt_SP_ACC_ChequeIssueProcessRowChanged" msprop:Generator_TablePropName="Rpt_SP_ACC_ChequeIssueProcess" msprop:Generator_RowDeletingName="Rpt_SP_ACC_ChequeIssueProcessRowDeleting" msprop:Generator_RowChangingName="Rpt_SP_ACC_ChequeIssueProcessRowChanging" msprop:Generator_RowEvHandlerName="Rpt_SP_ACC_ChequeIssueProcessRowChangeEventHandler" msprop:Generator_RowDeletedName="Rpt_SP_ACC_ChequeIssueProcessRowDeleted" msprop:Generator_RowClassName="Rpt_SP_ACC_ChequeIssueProcessRow" msprop:Generator_UserTableName="Rpt_SP_ACC_ChequeIssueProcess" msprop:Generator_RowEvArgName="Rpt_SP_ACC_ChequeIssueProcessRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ZoneInfoId" msprop:Generator_ColumnVarNameInTable="columnZoneInfoId" msprop:Generator_ColumnPropNameInRow="ZoneInfoId" msprop:Generator_ColumnPropNameInTable="ZoneInfoIdColumn" msprop:Generator_UserColumnName="ZoneInfoId" type="xs:int" />
+              <xs:element name="ZoneName" msprop:Generator_ColumnVarNameInTable="columnZoneName" msprop:Generator_ColumnPropNameInRow="ZoneName" msprop:Generator_ColumnPropNameInTable="ZoneNameColumn" msprop:Generator_UserColumnName="ZoneName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EntityId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnEntityId" msprop:Generator_ColumnPropNameInRow="EntityId" msprop:Generator_ColumnPropNameInTable="EntityIdColumn" msprop:Generator_UserColumnName="EntityId" type="xs:int" />
+              <xs:element name="EntityName" msprop:Generator_ColumnVarNameInTable="columnEntityName" msprop:Generator_ColumnPropNameInRow="EntityName" msprop:Generator_ColumnPropNameInTable="EntityNameColumn" msprop:Generator_UserColumnName="EntityName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChequeIssueId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnChequeIssueId" msprop:Generator_ColumnPropNameInRow="ChequeIssueId" msprop:Generator_ColumnPropNameInTable="ChequeIssueIdColumn" msprop:Generator_UserColumnName="ChequeIssueId" type="xs:int" />
+              <xs:element name="BankAccountId" msprop:Generator_ColumnVarNameInTable="columnBankAccountId" msprop:Generator_ColumnPropNameInRow="BankAccountId" msprop:Generator_ColumnPropNameInTable="BankAccountIdColumn" msprop:Generator_UserColumnName="BankAccountId" type="xs:int" />
+              <xs:element name="BankAccountName" msprop:Generator_ColumnVarNameInTable="columnBankAccountName" msprop:Generator_ColumnPropNameInRow="BankAccountName" msprop:Generator_ColumnPropNameInTable="BankAccountNameColumn" msprop:Generator_UserColumnName="BankAccountName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BankAccountNo" msprop:Generator_ColumnVarNameInTable="columnBankAccountNo" msprop:Generator_ColumnPropNameInRow="BankAccountNo" msprop:Generator_ColumnPropNameInTable="BankAccountNoColumn" msprop:Generator_UserColumnName="BankAccountNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChequeNo" msprop:Generator_ColumnVarNameInTable="columnChequeNo" msprop:Generator_ColumnPropNameInRow="ChequeNo" msprop:Generator_ColumnPropNameInTable="ChequeNoColumn" msprop:Generator_UserColumnName="ChequeNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="payTo" msprop:Generator_ColumnVarNameInTable="columnpayTo" msprop:Generator_ColumnPropNameInRow="payTo" msprop:Generator_ColumnPropNameInTable="payToColumn" msprop:Generator_UserColumnName="payTo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

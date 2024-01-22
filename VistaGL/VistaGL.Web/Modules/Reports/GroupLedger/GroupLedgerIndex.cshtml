@@ -1,0 +1,206 @@
+﻿@model VistaGL.Modules.Reports.ReportSearchViewModel
+@{
+    ViewBag.Title = "Group Ledger";
+}
+
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border grid-title">
+        <div class="title-text">Group Ledger</div>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Index", "GroupLedger", FormMethod.Post, new { @id = "frm" }))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div style="color:Red" class="@Model.ErrMsgClass">
+                            @Model.Message<br />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.ZoneInfoList, new { @class = "control-label " })
+                            <label class="required-field">*</label>
+                            &nbsp;&nbsp;<input type="checkbox" id="chkSelectAllZone">&nbsp;Select All Zone&nbsp;
+                        </div>
+                        @Html.DropDownList("ZoneItem", Model.Zone, "", new { @class = "required ddl col-sm-12", @multiple = "multiple" })
+                        <br />
+                    </div>
+                </div>
+                `
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Entity", new { @class = "control-label" })<label class="required-field">*</label>
+                        @Html.DropDownListFor(m => m.FundcontrolId, Model.Fundcontrol, "Select One", new { @class = "form-controlForDDL required ddl" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FromDate, new { @class = "control-label" })<label class="required-field">*</label>
+                        @Html.TextBoxFor(model => model.FromDate, new { @class = "fixed-rpt-date form-control required date" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ToDate, new { @class = "control-label" })<label class="required-field">*</label>
+                        @*<span class="input-group">*@
+                        @Html.TextBoxFor(model => model.ToDate, new { @class = "fixed-rpt-date form-control required date" })
+                        @*<span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                            </span>*@
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Account Head", new { @class = "control-label" })<label class="required-field">*</label>
+                        @Html.DropDownListFor(m => m.COAId, Model.COAParent, "Select One", new { @class = "form-controlForDDL required ddl" })
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        @Html.RadioButtonFor(m => m.TransactionType, "C", new { @class = "igTranType consolidated", @id = "optConsolidate", @checked = true }) @Html.Label("Consolidated")
+                        @Html.RadioButtonFor(m => m.TransactionType, "T", new { @class = "igTranType tabular", @id = "optTabular" }) @Html.Label("Tabular") &nbsp;&nbsp;&nbsp;
+
+                        @Html.CheckBoxFor(model => model.IsGroupbyCOA) &nbsp;  @Html.LabelFor(model => model.IsGroupbyCOA)
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.CheckBoxFor(model => model.IsWithOpening)&nbsp;@Html.LabelFor(model => model.IsWithOpening)
+
+                        <br />
+                        <span class="italic danger bold">Consolidated Report will load below in report viewer.</span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-search"></i> Preview</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+
+            @*<button type="submit" class="btn btn-primary" onclick="return fnValidate()">Submit</button>*@
+            @Html.HiddenFor(m => m.TransactionType)
+            @Html.HiddenFor(m => m.pZoneName)
+            @Html.HiddenFor(m => m.pEntityName)
+            @Html.HiddenFor(m => m.ZoneInfoList)
+            @Html.HiddenFor(m => m.pAccountHead)
+
+        </div>
+
+        if (!Model.IsError)
+        {
+            @Html.Partial("ReportsViewer")
+            <iframe src="~/ReportViewers/myGroupLedgerReportViewer.aspx" width="100%" height="100%" style="border: none; min-height: 1500px;"></iframe>
+        }
+    }
+</div><!-- /.box -->
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+        // Show/Hide controls on transaction type change. ---
+        if ($("#TransactionType")[0].value == "C") {
+            $('#IsGroupbyCOA, label[for=IsGroupbyCOA]').show();
+        }
+        else if ($("#TransactionType")[0].value == "T") {
+            $('#IsGroupbyCOA, label[for=IsGroupbyCOA]').hide();
+        }
+
+        $(".consolidated").on("change", function () {
+            $('#IsGroupbyCOA, label[for=IsGroupbyCOA]').show();
+        })
+        $(".tabular").on("change", function () {
+            $('#IsGroupbyCOA, label[for=IsGroupbyCOA]').hide();
+        })
+        // *** ---
+
+
+        $(".ddl").select2({
+            //
+            placeholder: {
+                id: '-1', // the value of the option
+                text: 'Select One'
+            },
+            allowClear: true
+        });
+
+        $("#chkSelectAllZone").click(function () {
+            if ($("#chkSelectAllZone").is(':checked')) {
+                $("#ZoneItem > option[value!='']").prop("selected", "selected");
+                $("#ZoneItem").trigger("change");
+            } else {
+                $('#ZoneItem').val(null).trigger('change');
+
+                $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+            }
+        });
+
+        var _ZoneInfoList = $("#ZoneInfoList").val().split(',');
+
+        $('#ZoneItem').select2().select2('val', _ZoneInfoList);
+
+        $(".date").datepicker();
+
+        d = new Date();
+        date = d.format("dd-MM-yyyy");
+
+        if ($('#FromDate').val() == '') {
+            $('#FromDate').val(date);
+            $('#ToDate').val(date);
+        }
+
+        $("#btnSubmit").click(function () {
+
+            var option_ZoneItem = $("#ZoneItem option:selected").map(function () {
+                return $(this).text();
+            }).get().join(', ');
+
+            $("#pZoneName").val(option_ZoneItem);
+            $("#pEntityName").val($("#FundcontrolId :selected").text());
+            var zone = $('#ZoneItem').val().toString();
+            $("#ZoneInfoList").val(zone);
+            $("#pAccountHead").val($("#COAId :selected").text());
+            return fnValidate()
+        });
+
+
+    });
+
+
+</script>

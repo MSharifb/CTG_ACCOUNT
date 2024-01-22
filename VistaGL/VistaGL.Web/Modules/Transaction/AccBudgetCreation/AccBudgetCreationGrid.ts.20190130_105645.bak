@@ -1,0 +1,32 @@
+﻿
+namespace VistaGL.Transaction {
+
+    @Serenity.Decorators.registerClass()
+    export class AccBudgetCreationGrid extends EntityGridBase<AccBudgetForDepartmentDetailRow, any> {
+        protected getColumnsKey() { return 'Transaction.AccBudgetCreation'; }
+        protected getDialogType() { return AccBudgetCreationDialog; }
+        protected getIdProperty() { return AccBudgetForDepartmentDetailRow.idProperty; }
+        protected getLocalTextPrefix() { return AccBudgetForDepartmentDetailRow.localTextPrefix; }
+        protected getService() { return AccBudgetForDepartmentDetailService.baseUrl; }
+
+        constructor(container: JQuery) {
+            super(container);
+
+            var tree = new _Ext.TreeGridMixin<AccBudgetForDepartmentDetailRow>({
+                grid: this,
+                getParentId: x => x.ParentId,
+                idField: AccBudgetForDepartmentDetailRow.Fields.BudgetHeadId,
+                toggleField: AccBudgetForDepartmentDetailRow.Fields.BudgetHeadId,
+                initialCollapse: () => false
+            });
+        }
+
+        protected markupReady() {
+            super.markupReady();
+
+            setTimeout(() => {
+                this.element.find('s-TreeToggle').addClass('s-TreeCollapse');
+            }, 1000)
+        }
+    }
+}

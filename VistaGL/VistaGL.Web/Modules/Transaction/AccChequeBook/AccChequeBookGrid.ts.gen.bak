@@ -1,0 +1,16 @@
+﻿
+namespace VistaGL.Transaction {
+    
+    @Serenity.Decorators.registerClass()
+    export class AccChequeBookGrid extends Serenity.EntityGrid<AccChequeBookRow, any> {
+        protected getColumnsKey() { return 'Transaction.AccChequeBook'; }
+        protected getDialogType() { return AccChequeBookDialog; }
+        protected getIdProperty() { return AccChequeBookRow.idProperty; }
+        protected getLocalTextPrefix() { return AccChequeBookRow.localTextPrefix; }
+        protected getService() { return AccChequeBookService.baseUrl; }
+
+        constructor(container: JQuery) {
+            super(container);
+        }
+    }
+}

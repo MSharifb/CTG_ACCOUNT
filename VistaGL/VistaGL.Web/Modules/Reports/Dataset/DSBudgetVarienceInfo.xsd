@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSBudgetVarienceInfo" targetNamespace="http://tempuri.org/DSBudgetVarienceInfo.xsd" xmlns:mstns="http://tempuri.org/DSBudgetVarienceInfo.xsd" xmlns="http://tempuri.org/DSBudgetVarienceInfo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ACCDB" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACCDB (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ACCDB.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSBudgetVarienceInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSBudgetVarienceInfo" msprop:Generator_UserDSName="DSBudgetVarienceInfo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Rpt_SP_ACC_BudgetApprovalProcess" msprop:Generator_TableClassName="Rpt_SP_ACC_BudgetApprovalProcessDataTable" msprop:Generator_TableVarName="tableRpt_SP_ACC_BudgetApprovalProcess" msprop:Generator_RowChangedName="Rpt_SP_ACC_BudgetApprovalProcessRowChanged" msprop:Generator_TablePropName="Rpt_SP_ACC_BudgetApprovalProcess" msprop:Generator_RowDeletingName="Rpt_SP_ACC_BudgetApprovalProcessRowDeleting" msprop:Generator_RowChangingName="Rpt_SP_ACC_BudgetApprovalProcessRowChanging" msprop:Generator_RowEvHandlerName="Rpt_SP_ACC_BudgetApprovalProcessRowChangeEventHandler" msprop:Generator_RowDeletedName="Rpt_SP_ACC_BudgetApprovalProcessRowDeleted" msprop:Generator_RowClassName="Rpt_SP_ACC_BudgetApprovalProcessRow" msprop:Generator_UserTableName="Rpt_SP_ACC_BudgetApprovalProcess" msprop:Generator_RowEvArgName="Rpt_SP_ACC_BudgetApprovalProcessRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="zoneName" msprop:Generator_ColumnVarNameInTable="columnzoneName" msprop:Generator_ColumnPropNameInRow="zoneName" msprop:Generator_ColumnPropNameInTable="zoneNameColumn" msprop:Generator_UserColumnName="zoneName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="budgetHead" msprop:Generator_ColumnVarNameInTable="columnbudgetHead" msprop:Generator_ColumnPropNameInRow="budgetHead" msprop:Generator_ColumnPropNameInTable="budgetHeadColumn" msprop:Generator_UserColumnName="budgetHead" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="budget_amount_prev" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbudget_amount_prev" msprop:Generator_ColumnPropNameInRow="budget_amount_prev" msprop:Generator_ColumnPropNameInTable="budget_amount_prevColumn" msprop:Generator_UserColumnName="budget_amount_prev" type="xs:decimal" minOccurs="0" />
+              <xs:element name="actual_amount_prev" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnactual_amount_prev" msprop:Generator_ColumnPropNameInRow="actual_amount_prev" msprop:Generator_ColumnPropNameInTable="actual_amount_prevColumn" msprop:Generator_UserColumnName="actual_amount_prev" type="xs:decimal" minOccurs="0" />
+              <xs:element name="budget_amount_cur" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbudget_amount_cur" msprop:Generator_ColumnPropNameInRow="budget_amount_cur" msprop:Generator_ColumnPropNameInTable="budget_amount_curColumn" msprop:Generator_UserColumnName="budget_amount_cur" type="xs:decimal" minOccurs="0" />
+              <xs:element name="actual_amount_cur" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnactual_amount_cur" msprop:Generator_ColumnPropNameInRow="actual_amount_cur" msprop:Generator_ColumnPropNameInTable="actual_amount_curColumn" msprop:Generator_UserColumnName="actual_amount_cur" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
